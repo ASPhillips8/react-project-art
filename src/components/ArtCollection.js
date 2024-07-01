@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Search from "./Search"
 import ArtList from "./ArtList"
+import "./ArtCollection.css"
 
 function ArtCollection() {
   const [artPieces, setArtPieces] = useState([])
@@ -12,7 +13,7 @@ function ArtCollection() {
   }, [])
 
   return (
-    <main>
+    <main className="art-collection">
       <Search />
       <ArtList artPieces={artPieces} />
     </main>

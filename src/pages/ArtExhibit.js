@@ -10,7 +10,6 @@ function ArtExhibit() {
       <Header />
       <NavBar />
       <h1>This is the Collection </h1>
-      <p>the collection</p>
       <ArtCollection />
     </div>
   )
