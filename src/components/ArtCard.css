@@ -1,0 +1,23 @@
+.art-card {
+  margin: 1rem;
+  width: calc(33% - 2rem);
+  flex: 1 0 33%;
+  max-width: calc(33% - 2rem);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.art-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.art-card h4 {
+  margin-top: 1rem;
+}
+
+.art-card p {
+  margin-top: 0.5rem;
+}

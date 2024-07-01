@@ -6,7 +6,7 @@ function Home() {
   const navigate = useNavigate()
 
   function handleEnterClick() {
-    navigate("/art-exhibit")
+    navigate("/artworks")
   }
 
   return (

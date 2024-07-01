@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div>
-      <Header>{!isHomePage && <NavBar />}</Header>
+      <Header>{!isHomePage ? <NavBar /> : null}</Header>
       <main>
         <Outlet />
         {isHomePage && (

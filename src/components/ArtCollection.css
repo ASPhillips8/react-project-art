@@ -1,0 +1,6 @@
+.art-collection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Display two columns per row */
+  gap: 20px; /* Adjust spacing between grid items */
+  padding: 20px; /* Optional: Add padding to the main container */
+}
