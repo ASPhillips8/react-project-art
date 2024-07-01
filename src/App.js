@@ -1,13 +1,18 @@
 import React from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 import NavBar from "./components/NavBar"
 
-const App = () => {
+function App() {
+  const location = useLocation()
+
+  // Check if the current location is not the home page
+  const showNavBar = location.pathname !== "/"
+
   return (
     <div>
-      <header>
+      <header style={{ display: showNavBar ? "block" : "none" }}>
         <h1>Dr. Lumpy Art Collection</h1>
-        <NavBar />
+        {showNavBar && <NavBar />}
       </header>
       <main>
         <Outlet />

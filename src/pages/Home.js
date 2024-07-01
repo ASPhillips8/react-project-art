@@ -1,10 +1,10 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
-const Home = () => {
+function Home() {
   const navigate = useNavigate()
 
-  const handleEnterClick = () => {
+  function handleEnterClick() {
     navigate("/art-exhibit")
   }
 
