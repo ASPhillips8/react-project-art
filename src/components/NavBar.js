@@ -4,14 +4,14 @@ import "./NavBar.css"
 
 function NavBar() {
   return (
-    <nav>
-      <NavLink to="/" className="navbar">
+    <nav className="nav">
+      <NavLink exact to="/" className="navbar" activeClassName="active">
         Home
       </NavLink>
-      <NavLink to="/artists" className="navbar">
+      <NavLink to="/artists" className="navbar" activeClassName="active">
         Artists
       </NavLink>
-      <NavLink to="/genres" className="navbar">
+      <NavLink to="/genres" className="navbar" activeClassName="active">
         Genres
       </NavLink>
     </nav>

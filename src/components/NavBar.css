@@ -1,16 +1,18 @@
-.nav-link {
-  display: inline-block;
-  box-sizing: border-box;
-  width: 60px;
-  padding: 5px;
-  margin: 0 6px 6px;
-  background: blue;
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* Adjust height as needed */
+  background-color: #333; /* Example background color */
+}
+
+.navbar {
   text-decoration: none;
-  text-align: center;
-  font-size: min(10vw, 15px);
+  padding: 10px 20px; /* Adjust padding as needed */
+  margin: 0 10px; /* Adjust margin to add space between links */
   color: white;
 }
 
-.active {
-  color: red;
+.navbar.active {
+  color: red; /* Example style for active link */
 }

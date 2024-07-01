@@ -1,0 +1,55 @@
+.card {
+  margin: 1rem;
+  width: calc(33% - 2rem); /* Default width for small screens */
+  flex: 1 0 33%; /* Flex properties for flexible layout */
+  max-width: calc(33% - 2rem); /* Max width to maintain responsiveness */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Box shadow for card effect */
+  border-radius: 8px; /* Optional: Rounded corners for card */
+  overflow: hidden; /* Optional: Hide overflow for consistent sizing */
+}
+
+.card img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any extra spaces */
+}
+
+.card h4 {
+  margin-top: 1rem; /* Optional: Adjust margin as needed */
+}
+
+.card p {
+  margin-top: 0.5rem; /* Optional: Adjust margin as needed */
+}
+
+.card button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #0056b3;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: calc(33% - 2rem); /* Adjusted width for medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: calc(25% - 2rem); /* Adjusted width for large screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    width: calc(20% - 2rem); /* Adjusted width for extra large screens */
+  }
+}
