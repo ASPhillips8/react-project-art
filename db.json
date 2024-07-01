@@ -1,0 +1,205 @@
+{
+  "artworks": [
+    {
+      "id": 1,
+      "title": "American Gothic",
+      "artistId": 1,
+      "year": 1930,
+      "medium": "Oil on beaverboard",
+      "genre": "Regionalism",
+      "description": "A painting depicting a farmer and his daughter.",
+      "image": "https://example.com/images/americangothic.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Nighthawks",
+      "artistId": 2,
+      "year": 1942,
+      "medium": "Oil on canvas",
+      "genre": "Modern art",
+      "description": "A famous painting of people in a diner at night.",
+      "image": "https://example.com/images/nighthawks.jpg"
+    },
+    {
+      "id": 3,
+      "title": "The Persistence of Memory",
+      "artistId": 3,
+      "year": 1931,
+      "medium": "Oil on canvas",
+      "genre": "Surrealism",
+      "description": "A surreal depiction of melting clocks.",
+      "image": "https://example.com/images/persistenceofmemory.jpg"
+    },
+    {
+      "id": 4,
+      "title": "The Birth of Venus",
+      "artistId": 4,
+      "year": 1486,
+      "medium": "Tempera on canvas",
+      "genre": "Renaissance",
+      "description": "A classical mythological painting of Venus.",
+      "image": "https://example.com/images/birthofvenus.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Girl with a Pearl Earring",
+      "artistId": 5,
+      "year": 1665,
+      "medium": "Oil on canvas",
+      "genre": "Baroque",
+      "description": "A portrait of a girl wearing a pearl earring.",
+      "image": "https://example.com/images/girlwithapearlearring.jpg"
+    },
+    {
+      "id": 6,
+      "title": "The Starry Night",
+      "artistId": 6,
+      "year": 1889,
+      "medium": "Oil on canvas",
+      "genre": "Post-Impressionism",
+      "description": "A famous painting of swirling stars.",
+      "image": "https://example.com/images/starrynight.jpg"
+    },
+    {
+      "id": 7,
+      "title": "The Scream",
+      "artistId": 7,
+      "year": 1893,
+      "medium": "Oil, tempera, and pastel on cardboard",
+      "genre": "Expressionism",
+      "description": "An iconic representation of anxiety.",
+      "image": "https://example.com/images/thescream.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Guernica",
+      "artistId": 8,
+      "year": 1937,
+      "medium": "Oil on canvas",
+      "genre": "Surrealism",
+      "description": "A powerful anti-war painting.",
+      "image": "https://example.com/images/guernica.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Les Demoiselles d'Avignon",
+      "artistId": 9,
+      "year": 1907,
+      "medium": "Oil on canvas",
+      "genre": "Cubism",
+      "description": "A groundbreaking work in the development of modern art.",
+      "image": "https://example.com/images/lesdemoisellesdavignon.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Water Lilies",
+      "artistId": 10,
+      "year": 1916,
+      "medium": "Oil on canvas",
+      "genre": "Impressionism",
+      "description": "A series of paintings capturing Monet's garden.",
+      "image": "https://example.com/images/waterlilies.jpg"
+    }
+  ],
+
+  "artists": [
+    {
+      "id": 1,
+      "name": "Grant Wood",
+      "artworks": [1]
+    },
+    {
+      "id": 2,
+      "name": "Edward Hopper",
+      "artworks": [2]
+    },
+    {
+      "id": 3,
+      "name": "Salvador Dalí",
+      "artworks": [3]
+    },
+    {
+      "id": 4,
+      "name": "Sandro Botticelli",
+      "artworks": [4]
+    },
+    {
+      "id": 5,
+      "name": "Johannes Vermeer",
+      "artworks": [5]
+    },
+    {
+      "id": 6,
+      "name": "Vincent van Gogh",
+      "artworks": [6]
+    },
+    {
+      "id": 7,
+      "name": "Edvard Munch",
+      "artworks": [7]
+    },
+    {
+      "id": 8,
+      "name": "Pablo Picasso",
+      "artworks": [8]
+    },
+    {
+      "id": 9,
+      "name": "Pablo Picasso",
+      "artworks": [9]
+    },
+    {
+      "id": 10,
+      "name": "Claude Monet",
+      "artworks": [10]
+    }
+  ],
+
+  "genres": [
+    {
+      "id": 1,
+      "name": "Regionalism",
+      "artworks": [1]
+    },
+    {
+      "id": 2,
+      "name": "Modern art",
+      "artworks": [2]
+    },
+    {
+      "id": 3,
+      "name": "Surrealism",
+      "artworks": [3, 8]
+    },
+    {
+      "id": 4,
+      "name": "Renaissance",
+      "artworks": [4]
+    },
+    {
+      "id": 5,
+      "name": "Baroque",
+      "artworks": [5]
+    },
+    {
+      "id": 6,
+      "name": "Post-Impressionism",
+      "artworks": [6]
+    },
+    {
+      "id": 7,
+      "name": "Expressionism",
+      "artworks": [7]
+    },
+    {
+      "id": 8,
+      "name": "Cubism",
+      "artworks": [9]
+    },
+    {
+      "id": 9,
+      "name": "Impressionism",
+      "artworks": [10]
+    }
+  ]
+}
