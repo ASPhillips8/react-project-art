@@ -5,13 +5,13 @@ import "./NavBar.css"
 function NavBar() {
   return (
     <nav className="nav">
-      <NavLink exact to="/" className="navbar" activeClassName="active">
+      <NavLink exact to="/" className="navbar">
         Home
       </NavLink>
-      <NavLink to="/artists" className="navbar" activeClassName="active">
+      <NavLink to="/artists" className="navbar">
         Artists
       </NavLink>
-      <NavLink to="/genres" className="navbar" activeClassName="active">
+      <NavLink to="/genres" className="navbar">
         Genres
       </NavLink>
     </nav>

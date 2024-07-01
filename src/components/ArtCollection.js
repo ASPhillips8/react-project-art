@@ -1,12 +1,20 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Search from "./Search"
 import ArtList from "./ArtList"
 
 function ArtCollection() {
+  const [artPieces, setArtPieces] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:3001/artworks")
+      .then((response) => response.json())
+      .then((artData) => setArtPieces(artData))
+  }, [])
+
   return (
     <main>
       <Search />
-      <ArtList />
+      <ArtList artPieces={artPieces} />
     </main>
   )
 }

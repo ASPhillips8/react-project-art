@@ -1,29 +1,3 @@
-// import React from "react"
-// import ReactDOM from "react-dom/client"
-// import "./index.css"
-// import App from "./App"
-// import Home from "./pages/Home"
-// import { createBrowserRouter, RouterProvider } from "react-router-dom"
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//   },
-//   {
-//     path: "/home",
-//     element: <Home />,
-//   },
-// ])
-
-// const root = ReactDOM.createRoot(document.getElementById("root"))
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// )
-// src/index.js
-
 import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
@@ -40,7 +14,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/art-exhibit",
+    path: "/artworks",
     element: <ArtExhibit />,
   },
   {
