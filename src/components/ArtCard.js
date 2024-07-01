@@ -1,17 +1,13 @@
 import React from "react"
 import "./ArtCard.css"
 
-function ArtCard() {
+function ArtCard({ artPiece }) {
+  const { id, title, year, image, medium } = artPiece
   return (
     <li className="card">
-      <img src={"https://via.placeholder.com/400"} alt={"Title"} />
-      <h4>{"Title"}</h4>
-      <p>Artist: {"artist"}</p>
-      {true ? (
-        <button className="primary">In Stock</button>
-      ) : (
-        <button>Out of Stock</button>
-      )}
+      <img src={image} alt={title} />
+      <h4>{title}</h4>
+      <p>Medium: {medium}</p>
     </li>
   )
 }
