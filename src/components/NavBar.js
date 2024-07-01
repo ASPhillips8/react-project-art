@@ -8,7 +8,7 @@ function NavBar() {
       <NavLink to="/" className="navbar">
         Home
       </NavLink>
-      <NavLink to="/artist" className="navbar">
+      <NavLink to="/artists" className="navbar">
         Artists
       </NavLink>
       <NavLink to="/genres" className="navbar">

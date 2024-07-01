@@ -31,6 +31,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import App from "./App"
 import Home from "./pages/Home"
 import ArtExhibit from "./pages/ArtExhibit"
+import Artists from "./pages/Artists"
+import Genre from "./pages/Genre"
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
   {
     path: "/art-exhibit",
     element: <ArtExhibit />,
+  },
+  {
+    path: "/artists",
+    element: <Artists />,
+  },
+  {
+    path: "/genres",
+    element: <Genre />,
   },
 ])
 

@@ -1,21 +1,27 @@
 import React from "react"
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation, Link } from "react-router-dom"
 import NavBar from "./components/NavBar"
+import Header from "./components/Header"
 
 function App() {
   const location = useLocation()
 
-  // Check if the current location is not the home page
-  const showNavBar = location.pathname !== "/"
+  // Determine if the current location is the home page
+  const isHomePage = location.pathname === "/"
 
   return (
     <div>
-      <header style={{ display: showNavBar ? "block" : "none" }}>
-        <h1>Dr. Lumpy Art Collection</h1>
-        {showNavBar && <NavBar />}
-      </header>
+      <Header>{!isHomePage && <NavBar />}</Header>
       <main>
         <Outlet />
+        {isHomePage && (
+          <div>
+            <p>Welcome to the Dr. Lumpy Art Collection!</p>
+            <button>
+              <Link to="/art-exhibit">Enter Art Exhibit</Link>
+            </button>
+          </div>
+        )}
       </main>
     </div>
   )

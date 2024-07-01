@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom"
 import NavBar from "../components/NavBar"
 import Header from "../components/Header"
 
-function ArtExhibit() {
+function Genre() {
   return (
     <div>
       <Header />
       <NavBar />
-      <h1>This is the Collection </h1>
-      <p>the collection</p>
+      <h1>Genre Page </h1>
+      <ul>List of Genre</ul>
     </div>
   )
 }
 
-export default ArtExhibit
+export default Genre
