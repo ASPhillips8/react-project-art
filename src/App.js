@@ -1,11 +1,17 @@
-import "./App.css"
+import React from "react"
+import { Outlet } from "react-router-dom"
+import NavBar from "./components/NavBar"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>My App</h1>
+    <div>
+      <header>
+        <h1>Dr. Lumpy Art Collection</h1>
+        <NavBar />
       </header>
+      <main>
+        <Outlet />
+      </main>
     </div>
   )
 }
