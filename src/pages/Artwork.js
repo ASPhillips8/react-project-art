@@ -11,7 +11,6 @@ function Artwork() {
   useEffect(() => {
     fetch(`http://localhost:3001/artworks/${artworkId}`)
       .then((response) => response.json())
-
       .then((artData) => setArtwork(artData))
       .catch((error) => console.error(error))
   }, [artworkId])
@@ -21,16 +20,20 @@ function Artwork() {
   }
 
   return (
-    <div>
+    <div className="artwork-page">
       <Header />
       <NavBar />
-      <article>
-        <h1>{artwork.title} </h1>
-        <h2>{artwork.year}</h2>
-        <p>{artwork.description}</p>
-        <span>{artwork.genre}</span>
-      </article>
-      <img src={artwork.image} alt={artwork.title}></img>
+      <div className="artwork-details">
+        <article className="text-elements">
+          <h1>{artwork.title}</h1>
+          <h2>{artwork.year}</h2>
+          <p>{artwork.description}</p>
+          <span>{artwork.genre}</span>
+        </article>
+        <div className="image-container">
+          <img src={artwork.image} alt={artwork.title} />
+        </div>
+      </div>
     </div>
   )
 }
