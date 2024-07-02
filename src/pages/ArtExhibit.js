@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import NavBar from "../components/NavBar"
 import Header from "../components/Header"
 import Sort from "../components/Sort"
@@ -14,6 +13,7 @@ const sortOptions = [
 
 function ArtExhibit() {
   const [artPieces, setArtPieces] = useState([])
+  const [search, setSearch] = useState("")
   const [sortCategory, setSortCategory] = useState("all")
 
   useEffect(() => {
@@ -22,30 +22,39 @@ function ArtExhibit() {
       .then((artData) => setArtPieces(artData))
   }, [])
 
+  function handleSearch(searchInput) {
+    setSearch(searchInput)
+  }
+
   const handleSortCategoryChange = (category) => {
     setSortCategory(category)
   }
 
+  const filterdCollection = artPieces.filter((artPiece) =>
+    artPiece.title.toLowerCase().includes(search.toLowerCase())
+  )
+
   const sortedAndFilteredListings =
     sortCategory !== "all"
-      ? [...artPieces].sort((a, b) => {
+      ? [...filterdCollection].sort((a, b) => {
           const categoryA = a[sortCategory] ? a[sortCategory].toLowerCase() : ""
           const categoryB = b[sortCategory] ? b[sortCategory].toLowerCase() : ""
           return categoryA.localeCompare(categoryB)
         })
-      : [...artPieces]
+      : [...filterdCollection]
 
   return (
     <div>
       <Header />
       <NavBar />
       <h1>This is the Collection</h1>
+      <Search onSearch={handleSearch} />
+      <br></br>
       <Sort
         sortCategory={sortCategory}
         onSortCategory={handleSortCategoryChange}
         options={sortOptions}
       />
-      <Search />
       <ArtList artPieces={sortedAndFilteredListings} />
     </div>
   )
