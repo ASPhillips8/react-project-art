@@ -1,6 +1,6 @@
 import React from "react"
 
-const Sort = ({ sortCategory, onSortCategory }) => {
+const Sort = ({ sortCategory, onSortCategory, options }) => {
   const handleSortChange = (event) => {
     onSortCategory(event.target.value)
   }
@@ -9,9 +9,11 @@ const Sort = ({ sortCategory, onSortCategory }) => {
     <div className="sort-container">
       <label htmlFor="sort">Sort by:</label>
       <select id="sort" value={sortCategory} onChange={handleSortChange}>
-        <option value="all">All</option>
-        <option value="medium">Medium</option>
-        <option value="title">Title</option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
       </select>
     </div>
   )

@@ -4,15 +4,15 @@ import ArtList from "./ArtList"
 import Sort from "./Sort"
 import "./ArtCollection.css"
 
-const sortStrategies = {
-  Alphabetically: (a, b) => a.title.localeCompare(b.title),
-  MediaStreamAudioSourceNode: (a, b) => a.artist.localeCompare(b.artist),
-  YearAscending: (a, b) => a.year - b.year,
-}
+const sortOptions = [
+  { value: "all", label: "All" },
+  { value: "medium", label: "Medium" },
+  { value: "title", label: "Title" },
+]
 
 function ArtCollection() {
   const [artPieces, setArtPieces] = useState([])
-  const [sortCategory, setSortCategory] = useState("")
+  const [sortCategory, setSortCategory] = useState("all")
 
   useEffect(() => {
     fetch("http://localhost:3001/artworks")
@@ -20,19 +20,28 @@ function ArtCollection() {
       .then((artData) => setArtPieces(artData))
   }, [])
 
-  const sortedAndFilteredListings = sortCategory
-    ? artPieces.sort((a, b) => {
-        return a[sortCategory]
-          .toLowerCase()
-          .localeCompare(b[sortCategory].toLowerCase())
-      })
-    : artPieces
+  const handleSortCategoryChange = (category) => {
+    setSortCategory(category)
+  }
+
+  const sortedAndFilteredListings =
+    sortCategory !== "all"
+      ? [...artPieces].sort((a, b) => {
+          const categoryA = a[sortCategory] ? a[sortCategory].toLowerCase() : ""
+          const categoryB = b[sortCategory] ? b[sortCategory].toLowerCase() : ""
+          return categoryA.localeCompare(categoryB)
+        })
+      : [...artPieces]
 
   return (
     <main className="art-collection">
-      <Sort onSortCategory={setSortCategory} sortCategory={sortCategory} />
+      <Sort
+        sortCategory={sortCategory}
+        onSortCategory={handleSortCategoryChange}
+        options={sortOptions}
+      />
       <Search />
-      <ArtList artPieces={artPieces} />
+      <ArtList artPieces={sortedAndFilteredListings} />
     </main>
   )
 }
