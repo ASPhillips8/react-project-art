@@ -5,8 +5,6 @@ import Header from "./components/Header"
 
 function App() {
   const location = useLocation()
-
-  // Determine if the current location is the home page
   const isHomePage = location.pathname === "/"
 
   return (
