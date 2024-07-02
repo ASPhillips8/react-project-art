@@ -24,7 +24,6 @@ function ArtExhibit() {
       .then((artData) => setArtPieces(artData))
   }, [])
 
-  console.log("artEx", artPieces)
   function handleTitleSearch(searchInput) {
     setSearch(searchInput)
   }
