@@ -27,7 +27,7 @@ Once on the ArtExhibit page, I want to view artworks and navigate using a NavBar
 ## Feature 3: Art Piece Details
 
 **User Story:**
-Clicking on an artwork card, I expect to navigate to a detailed view showing its description, year, medium, and genre.
+Clicking on an artwork card, I expect to navigate to a detailed view showing its description, year, image and genre.
 
 **Details:**
 

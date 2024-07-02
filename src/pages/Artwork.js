@@ -25,7 +25,7 @@ function Artwork() {
       <NavBar />
       <div className="artwork-details">
         <article className="text-elements">
-          <h1>{artwork.title}</h1>
+          <h1>"{artwork.title}"</h1>
           <h2>{artwork.year}</h2>
           <p>{artwork.description}</p>
           <span>{artwork.genre}</span>
