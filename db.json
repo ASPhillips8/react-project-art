@@ -1,10 +1,10 @@
 {
   "artworks": [
     {
-      "id": 1,
+      "id": "1",
       "title": "American Gothic",
-      "artistId": 1,
-      "year": 1930,
+      "artistId": "1",
+      "year": "1930",
       "medium": "Oil on beaverboard",
       "genre": "Regionalism",
       "description": "A painting depicting a farmer and his daughter.",
@@ -12,10 +12,10 @@
       "image": "https://www.artic.edu/iiif/2/b272df73-a965-ac37-4172-be4e99483637/full/843,/0/default.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Nighthawks",
-      "artistId": 2,
-      "year": 1942,
+      "artistId": "2",
+      "year": "1942",
       "medium": "Oil on canvas",
       "genre": "Modern art",
       "description": "A famous painting of people in a diner at night.",
@@ -23,10 +23,10 @@
       "image": "https://www.artic.edu/iiif/2/831a05de-d3f6-f4fa-a460-23008dd58dda/full/843,/0/default.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "The Kiss",
-      "artistId": 3,
-      "year": 1965,
+      "artistId": "3",
+      "year": "1965",
       "medium": "Color lithograph from three stones on white wove paper",
       "genre": "Pop Art",
       "description": "In this print, Marisol juxtaposed negative and positive space to create perceptual reversals that are especially poignant when one discovers that the shapes are the artist’s face and hands. In Marisol’s work throughout the 1960s and 1970s, hands and fingers recur as signifiers of autoerotic content.",
@@ -34,10 +34,10 @@
       "image": "https://www.artic.edu/iiif/2/65726dde-1dda-dae8-f2f1-7a0274d88924/full/843,/0/default.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "The Birth of Venus",
-      "artistId": 4,
-      "year": 1486,
+      "artistId": "4",
+      "year": "1486",
       "medium": "Tempera on canvas",
       "genre": "Renaissance",
       "description": "A classical mythological painting of Venus.",
@@ -45,10 +45,10 @@
       "image": "https://www.artic.edu/iiif/2/a494ce98-35d7-2d3d-cba4-729e307fa637/full/843,/0/default.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Girl with a Pearl Earring",
-      "artistId": 5,
-      "year": 1665,
+      "artistId": "5",
+      "year": "1665",
       "medium": "Oil on canvas",
       "genre": "Baroque",
       "description": "A portrait of a girl wearing a pearl earring.",
@@ -56,10 +56,10 @@
       "image": "https://cdn.britannica.com/33/194733-050-4CF75F31/Girl-with-a-Pearl-Earring-canvas-Johannes-1665.jpg?w=300"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "The Starry Night",
-      "artistId": 6,
-      "year": 1889,
+      "artistId": "6",
+      "year": "1889",
       "medium": "Oil on canvas",
       "genre": "Post-Impressionism",
       "description": "A famous painting of swirling stars.",
@@ -67,10 +67,10 @@
       "image": "https://cdn.britannica.com/78/43678-050-F4DC8D93/Starry-Night-canvas-Vincent-van-Gogh-New-1889.jpg?w=300"
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "The Scream",
-      "artistId": 7,
-      "year": 1893,
+      "artistId": "7",
+      "year": "1893",
       "medium": "Oil, tempera, and pastel on cardboard",
       "genre": "Expressionism",
       "description": "An iconic representation of anxiety.",
@@ -78,10 +78,10 @@
       "image": "https://cdn.britannica.com/32/2832-050-9DD1D041/The-Scream-casein-cardboard-Edvard-Munch-National-1893.jpg?w=300"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Guernica",
-      "artistId": 8,
-      "year": 1937,
+      "artistId": "8",
+      "year": "1937",
       "medium": "Oil on canvas",
       "genre": "Surrealism",
       "description": "A powerful anti-war painting.",
@@ -89,10 +89,10 @@
       "image": "https://cdn.britannica.com/79/91479-050-24F98E12/Guernica-canvas-Pablo-Picasso-Madrid-Museo-Nacional-1937.jpg?w=300"
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Les Demoiselles d'Avignon",
-      "artistId": 8,
-      "year": 1907,
+      "artistId": "8",
+      "year": "1907",
       "medium": "Oil on canvas",
       "genre": "Cubism",
       "description": "A groundbreaking work in the development of modern art.",
@@ -100,10 +100,10 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/800px-Les_Demoiselles_d%27Avignon.jpg"
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Water Lilies",
-      "artistId": 9,
-      "year": 1906,
+      "artistId": "9",
+      "year": "1906",
       "medium": "Oil on canvas",
       "genre": "Impressionism",
       "description": "A series of paintings capturing Monet's garden.",
@@ -113,101 +113,101 @@
   ],
   "artists": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Grant Wood",
-      "artworks": [1]
+      "artworks": ["1"]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Edward Hopper",
-      "artworks": [2]
+      "artworks": ["2"]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Marisol Escobar",
-      "artworks": [3]
+      "artworks": ["3"]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Sandro Botticelli",
-      "artworks": [4]
+      "artworks": ["4"]
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Johannes Vermeer",
-      "artworks": [5]
+      "artworks": ["5"]
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Vincent van Gogh",
-      "artworks": [6]
+      "artworks": ["6"]
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Edvard Munch",
-      "artworks": [7]
+      "artworks": ["7"]
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Pablo Picasso",
-      "artworks": [8, 9]
+      "artworks": ["8", "9"]
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Claude Monet",
-      "artworks": [10]
+      "artworks": ["10"]
     }
   ],
   "genres": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Regionalism",
-      "artworks": [1]
+      "artworks": ["1"]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Modern art",
-      "artworks": [2]
+      "artworks": ["2"]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Pop Art",
-      "artworks": [3]
+      "artworks": ["3"]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Renaissance",
-      "artworks": [4]
+      "artworks": ["4"]
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Baroque",
-      "artworks": [5]
+      "artworks": ["5"]
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Post-Impressionism",
-      "artworks": [6]
+      "artworks": ["6"]
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Expressionism",
-      "artworks": [7]
+      "artworks": ["7"]
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Surrealism",
-      "artworks": [8]
+      "artworks": ["8"]
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Cubism",
-      "artworks": [9]
+      "artworks": ["9"]
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Impressionism",
-      "artworks": [10]
+      "artworks": ["10"]
     }
   ]
 }

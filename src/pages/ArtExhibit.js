@@ -4,6 +4,7 @@ import Header from "../components/Header"
 import Sort from "../components/Sort"
 import Search from "../components/Search"
 import ArtList from "../components/ArtList"
+import NewArtWorkForm from "../components/NewArtWorkForm"
 
 const sortOptions = [
   { value: "all", label: "All" },
@@ -15,6 +16,7 @@ function ArtExhibit() {
   const [artPieces, setArtPieces] = useState([])
   const [search, setSearch] = useState("")
   const [sortCategory, setSortCategory] = useState("all")
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     fetch("http://localhost:3001/artworks")
@@ -22,12 +24,17 @@ function ArtExhibit() {
       .then((artData) => setArtPieces(artData))
   }, [])
 
+  console.log("artEx", artPieces)
   function handleTitleSearch(searchInput) {
     setSearch(searchInput)
   }
 
-  const handleSortCategoryChange = (category) => {
+  function handleSortCategoryChange(category) {
     setSortCategory(category)
+  }
+
+  function handleNewArtwork(newArtwork) {
+    setArtPieces([...artPieces, newArtwork])
   }
 
   const filteredCollection = artPieces.filter((artPiece) =>
@@ -55,7 +62,13 @@ function ArtExhibit() {
         onSortCategory={handleSortCategoryChange}
         options={sortOptions}
       />
+      <button onClick={() => setIsModalOpen(true)}>Add New Art Piece</button>
       <ArtList artPieces={sortedAndFilteredListings} />
+      <NewArtWorkForm
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(!isModalOpen)}
+        onAddNewArt={handleNewArtwork}
+      />
     </main>
   )
 }
