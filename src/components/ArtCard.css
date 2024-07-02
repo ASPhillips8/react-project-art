@@ -1,11 +1,17 @@
+.art-card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+  gap: 20px; /* Adjust the gap between cards as needed */
+}
+
 .art-card {
-  margin: 1rem;
-  width: calc(33% - 2rem);
-  flex: 1 0 33%;
-  max-width: calc(33% - 2rem);
+  width: 400px; /* Adjust as needed for your design */
+  max-width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
+  margin: 10px; /* Adjust margin to control spacing between cards */
+  padding: 10px; /* Adjust padding inside the card if necessary */
 }
 
 .art-card img {

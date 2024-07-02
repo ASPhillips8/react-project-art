@@ -5,7 +5,7 @@ function ArtList({ artPieces }) {
   const displayedArt = artPieces.map((artPiece) => {
     return <ArtCard key={artPiece.id} artPiece={artPiece}></ArtCard>
   })
-  return <ul className="cards">{displayedArt}</ul>
+  return <ul className="art-card-container">{displayedArt}</ul>
 }
 
 export default ArtList
