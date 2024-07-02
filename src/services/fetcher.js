@@ -33,13 +33,15 @@ function updateArtists(id, artists) {
 }
 
 function updateGenre(id, genre) {
-  return fetch(genreUrl + id, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ artworks: genre.artworks }),
-  }).then((response) => response.json())
+  if (genre.id) {
+    return fetch(genreUrl + id, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ artworks: genre.artworks }),
+    }).then((response) => response.json())
+  }
 }
 
 function addNewArtwork(newArtWork) {
@@ -49,7 +51,7 @@ function addNewArtwork(newArtWork) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newArtWork),
-  })
+  }).then((response) => response.json())
 }
 
 export { createArtist, createGenre, updateArtists, updateGenre, addNewArtwork }

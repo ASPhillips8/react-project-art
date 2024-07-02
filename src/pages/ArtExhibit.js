@@ -24,12 +24,17 @@ function ArtExhibit() {
       .then((artData) => setArtPieces(artData))
   }, [])
 
+  console.log("artEx", artPieces)
   function handleTitleSearch(searchInput) {
     setSearch(searchInput)
   }
 
-  const handleSortCategoryChange = (category) => {
+  function handleSortCategoryChange(category) {
     setSortCategory(category)
+  }
+
+  function handleNewArtwork(newArtwork) {
+    setArtPieces([...artPieces, newArtwork])
   }
 
   const filteredCollection = artPieces.filter((artPiece) =>
@@ -62,6 +67,7 @@ function ArtExhibit() {
       <NewArtWorkForm
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(!isModalOpen)}
+        onAddNewArt={handleNewArtwork}
       />
     </main>
   )

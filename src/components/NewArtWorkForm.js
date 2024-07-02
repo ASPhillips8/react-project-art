@@ -7,7 +7,7 @@ import {
   updateGenre,
 } from "../services/fetcher"
 
-function NewArtWorkForm({ isOpen, onClose }) {
+function NewArtWorkForm({ isOpen, onClose, onAddNewArt }) {
   const [formData, setFormData] = useState({
     title: "",
     artist: "",
@@ -22,15 +22,15 @@ function NewArtWorkForm({ isOpen, onClose }) {
   const [genres, setGenres] = useState([])
 
   useEffect(() => {
-    // Fetch artists
-    fetch("http://localhost:3001/artists")
-      .then((response) => response.json())
-      .then((data) => setArtists(data))
-
-    // Fetch genres
-    fetch("http://localhost:3001/genres")
-      .then((response) => response.json())
-      .then((data) => setGenres(data))
+    Promise.all([
+      fetch("http://localhost:3001/artists").then((response) =>
+        response.json()
+      ),
+      fetch("http://localhost:3001/genres").then((response) => response.json()),
+    ]).then(([artistsData, genresData]) => {
+      setArtists(artistsData)
+      setGenres(genresData)
+    })
   }, [])
 
   const handleFormInput = (event) => {
@@ -38,33 +38,29 @@ function NewArtWorkForm({ isOpen, onClose }) {
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    let artistId
-    let artistEntry = artists.find((a) => a.name === formData.artist)
 
-    if (artistEntry) {
-      artistId = artistEntry.id
-    } else {
-      artistId = artists.length + 1
+    let artistEntry = artists.find((a) => a.name === formData.artist)
+    if (!artistEntry) {
       artistEntry = {
-        id: artistId,
+        id: (artists.length + 1).toString(),
         name: formData.artist,
         artworks: [],
       }
+      await createArtist(artistEntry)
     }
-    createArtist(artistEntry)
 
     let genreEntry = genres.find((g) => g.name === formData.genre)
     if (!genreEntry) {
-      const genreId = genres.length + 1
       genreEntry = {
-        id: genreId,
+        id: (genres.length + 1).toString(),
         name: formData.genre,
         artworks: [],
       }
-      createGenre(genreEntry)
+      await createGenre(genreEntry)
     }
+
     const newArt = {
       title: formData.title,
       artist: formData.artist,
@@ -73,14 +69,29 @@ function NewArtWorkForm({ isOpen, onClose }) {
       genre: formData.genre,
       description: formData.description,
       image: formData.image,
-      artistId,
+      artistId: artistEntry.id,
     }
-    addNewArtwork(newArt).then((createdArtData) => {
-      artistEntry.artworks.push(createdArtData.id)
-      updateArtists(artistId, artistEntry)
-      genreEntry.artworks.push(createdArtData.id)
-      updateGenre(genreEntry.id, genreEntry)
+
+    const createdArtData = await addNewArtwork(newArt)
+
+    artistEntry.artworks.push(createdArtData.id)
+    await updateArtists(artistEntry.id, artistEntry)
+
+    genreEntry.artworks.push(createdArtData.id)
+    await updateGenre(genreEntry.id, genreEntry)
+
+    onAddNewArt(createdArtData)
+
+    setFormData({
+      title: "",
+      artist: "",
+      year: "",
+      medium: "",
+      genre: "",
+      description: "",
+      image: "",
     })
+
     onClose()
   }
 
