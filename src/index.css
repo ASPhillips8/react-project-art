@@ -54,3 +54,28 @@ code {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+
+.artwork-page {
+  padding: 20px;
+}
+
+.artwork-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.text-elements {
+  text-align: center;
+}
+
+.image-container {
+  margin-top: 50px;
+  max-width: 100%;
+}
+
+.image-container img {
+  max-width: 100%;
+  /height: auto;
+}
