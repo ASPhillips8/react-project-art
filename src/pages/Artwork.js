@@ -30,6 +30,7 @@ function Artwork() {
           <p>{artwork.description}</p>
           <span>{artwork.genre}</span>
         </article>
+        <h2>{artwork.artist}</h2>
         <div className="image-container">
           <img src={artwork.image} alt={artwork.title} />
         </div>
