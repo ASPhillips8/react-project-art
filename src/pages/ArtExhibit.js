@@ -44,7 +44,7 @@ function ArtExhibit() {
       : [...filterdCollection]
 
   return (
-    <div>
+    <main>
       <Header />
       <NavBar />
       <h1>This is the Collection</h1>
@@ -56,7 +56,7 @@ function ArtExhibit() {
         options={sortOptions}
       />
       <ArtList artPieces={sortedAndFilteredListings} />
-    </div>
+    </main>
   )
 }
 

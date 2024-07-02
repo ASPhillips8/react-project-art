@@ -23,7 +23,7 @@ function Artwork() {
     <div className="artwork-page">
       <Header />
       <NavBar />
-      <div className="artwork-details">
+      <main className="artwork-details">
         <article className="text-elements">
           <h1>"{artwork.title}"</h1>
           <h2>{artwork.year}</h2>
@@ -34,7 +34,7 @@ function Artwork() {
         <div className="image-container">
           <img src={artwork.image} alt={artwork.title} />
         </div>
-      </div>
+      </main>
     </div>
   )
 }
