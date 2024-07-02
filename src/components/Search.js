@@ -7,7 +7,7 @@ function Search({ onSearch }) {
       <input
         type="text"
         id="search"
-        placeholder="Type a name to search..."
+        placeholder="Type to search..."
         onChange={(event) => onSearch(event.target.value)}
       />
     </div>

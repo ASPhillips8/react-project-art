@@ -13,11 +13,11 @@ function Artists() {
       .then((artistData) => setArtists(artistData))
   }, [])
 
-  const filteredCollection = artists.filter((artist) =>
+  const filteredArtistCollection = artists.filter((artist) =>
     artist.name.toLowerCase().includes(search.toLowerCase())
   )
 
-  const artistList = filteredCollection.map((artist) => {
+  const artistList = filteredArtistCollection.map((artist) => {
     return (
       <li key={artist.id}>
         <h2>{artist.name}</h2>

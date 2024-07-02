@@ -47,7 +47,7 @@ function ArtExhibit() {
     <main>
       <Header />
       <NavBar />
-      <h1>This is the Collection</h1>
+      <h1>Current Collection</h1>
       <Search onSearch={handleTitleSearch} />
       <br></br>
       <Sort
