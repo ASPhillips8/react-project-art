@@ -13,7 +13,11 @@ function Artists() {
       .then((artistData) => setArtists(artistData))
   }, [])
 
-  const artistList = artists.map((artist) => {
+  const filteredCollection = artists.filter((artist) =>
+    artist.name.toLowerCase().includes(search.toLowerCase())
+  )
+
+  const artistList = filteredCollection.map((artist) => {
     return (
       <li key={artist.id}>
         <h2>{artist.name}</h2>
@@ -22,8 +26,8 @@ function Artists() {
     )
   })
 
-  function handleSearch(event) {
-    console.log(event.target.value)
+  function handleArtistSearch(searchInput) {
+    setSearch(searchInput)
   }
 
   return (
@@ -31,7 +35,7 @@ function Artists() {
       <Header />
       <NavBar />
       <h1>Artists on Display</h1>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleArtistSearch} />
       <br></br>
       <ul>{artistList}</ul>
     </main>

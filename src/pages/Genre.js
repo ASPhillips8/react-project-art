@@ -5,6 +5,7 @@ import Search from "../components/Search"
 
 function Genre() {
   const [genres, setGenres] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3001/genres")
@@ -12,7 +13,15 @@ function Genre() {
       .then((genreData) => setGenres(genreData))
   }, [])
 
-  const genreList = genres.map((genre) => {
+  function handleGenreSearch(searchInput) {
+    setSearch(searchInput)
+  }
+
+  const filteredGenreCollection = genres.filter((genre) =>
+    genre.name.toLowerCase().includes(search.toLowerCase())
+  )
+
+  const genreList = filteredGenreCollection.map((genre) => {
     return (
       <li key={genre.id}>
         <h2>{genre.name}</h2>
@@ -21,16 +30,12 @@ function Genre() {
     )
   })
 
-  function handleSearch(event) {
-    console.log(event.target.value)
-  }
-
   return (
     <main>
       <Header />
       <NavBar />
       <h1>Genres on Display</h1>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleGenreSearch} />
       <br></br>
       <ul>{genreList}</ul>
     </main>
