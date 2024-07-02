@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-function NewArtWorkForm({ isOpen }) {
+function NewArtWorkForm({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
     title: "",
     artist: "",
@@ -26,7 +26,9 @@ function NewArtWorkForm({ isOpen }) {
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close-button">&times;</span>
+        <span className="close-button" onClick={onClose}>
+          &times;
+        </span>
         <h2>Add New Art Piece</h2>
         <form onSubmit={handleSubmit}>
           <input

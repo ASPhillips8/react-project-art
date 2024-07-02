@@ -59,7 +59,10 @@ function ArtExhibit() {
       />
       <button onClick={() => setIsModalOpen(true)}>Add New Art Piece</button>
       <ArtList artPieces={sortedAndFilteredListings} />
-      <NewArtWorkForm isOpen={isModalOpen} />
+      <NewArtWorkForm
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(!isModalOpen)}
+      />
     </main>
   )
 }
