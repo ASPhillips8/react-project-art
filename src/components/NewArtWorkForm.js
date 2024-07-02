@@ -1,4 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import {
+  addNewArtwork,
+  createArtist,
+  createGenre,
+  updateArtists,
+  updateGenre,
+} from "../services/fetcher"
 
 function NewArtWorkForm({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -11,6 +18,21 @@ function NewArtWorkForm({ isOpen, onClose }) {
     image: "",
   })
 
+  const [artists, setArtists] = useState([])
+  const [genres, setGenres] = useState([])
+
+  useEffect(() => {
+    // Fetch artists
+    fetch("http://localhost:3001/artists")
+      .then((response) => response.json())
+      .then((data) => setArtists(data))
+
+    // Fetch genres
+    fetch("http://localhost:3001/genres")
+      .then((response) => response.json())
+      .then((data) => setGenres(data))
+  }, [])
+
   const handleFormInput = (event) => {
     const { name, value } = event.target
     setFormData({ ...formData, [name]: value })
@@ -18,7 +40,48 @@ function NewArtWorkForm({ isOpen, onClose }) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(formData)
+    let artistId
+    let artistEntry = artists.find((a) => a.name === formData.artist)
+
+    if (artistEntry) {
+      artistId = artistEntry.id
+    } else {
+      artistId = artists.length + 1
+      artistEntry = {
+        id: artistId,
+        name: formData.artist,
+        artworks: [],
+      }
+    }
+    createArtist(artistEntry)
+
+    let genreEntry = genres.find((g) => g.name === formData.genre)
+    if (!genreEntry) {
+      const genreId = genres.length + 1
+      genreEntry = {
+        id: genreId,
+        name: formData.genre,
+        artworks: [],
+      }
+      createGenre(genreEntry)
+    }
+    const newArt = {
+      title: formData.title,
+      artist: formData.artist,
+      year: parseInt(formData.year),
+      medium: formData.medium,
+      genre: formData.genre,
+      description: formData.description,
+      image: formData.image,
+      artistId,
+    }
+    addNewArtwork(newArt).then((createdArtData) => {
+      artistEntry.artworks.push(createdArtData.id)
+      updateArtists(artistId, artistEntry)
+      genreEntry.artworks.push(createdArtData.id)
+      updateGenre(genreEntry.id, genreEntry)
+    })
+    onClose()
   }
 
   if (!isOpen) return null
