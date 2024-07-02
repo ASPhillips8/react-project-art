@@ -5,6 +5,7 @@ import Search from "../components/Search"
 
 function Artists() {
   const [artists, setArtists] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3001/artists")
@@ -14,10 +15,10 @@ function Artists() {
 
   const artistList = artists.map((artist) => {
     return (
-      <article key={artist.id}>
+      <li key={artist.id}>
         <h2>{artist.name}</h2>
         <p>Number of Pieces in the Collection: {artist.artworks.length}</p>
-      </article>
+      </li>
     )
   })
 
@@ -32,7 +33,7 @@ function Artists() {
       <h1>Artists on Display</h1>
       <Search onSearch={handleSearch} />
       <br></br>
-      {artistList}
+      <ul>{artistList}</ul>
     </main>
   )
 }

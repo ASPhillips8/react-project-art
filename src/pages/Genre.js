@@ -14,10 +14,10 @@ function Genre() {
 
   const genreList = genres.map((genre) => {
     return (
-      <article key={genre.id}>
+      <li key={genre.id}>
         <h2>{genre.name}</h2>
         <p>Number of Pieces in the Collection: {genre.artworks.length}</p>
-      </article>
+      </li>
     )
   })
 
@@ -32,7 +32,7 @@ function Genre() {
       <h1>Genres on Display</h1>
       <Search onSearch={handleSearch} />
       <br></br>
-      {genreList}
+      <ul>{genreList}</ul>
     </main>
   )
 }
