@@ -22,7 +22,7 @@ function ArtExhibit() {
       .then((artData) => setArtPieces(artData))
   }, [])
 
-  function handleSearch(searchInput) {
+  function handleTitleSearch(searchInput) {
     setSearch(searchInput)
   }
 
@@ -30,25 +30,25 @@ function ArtExhibit() {
     setSortCategory(category)
   }
 
-  const filterdCollection = artPieces.filter((artPiece) =>
+  const filteredCollection = artPieces.filter((artPiece) =>
     artPiece.title.toLowerCase().includes(search.toLowerCase())
   )
 
   const sortedAndFilteredListings =
     sortCategory !== "all"
-      ? [...filterdCollection].sort((a, b) => {
+      ? [...filteredCollection].sort((a, b) => {
           const categoryA = a[sortCategory] ? a[sortCategory].toLowerCase() : ""
           const categoryB = b[sortCategory] ? b[sortCategory].toLowerCase() : ""
           return categoryA.localeCompare(categoryB)
         })
-      : [...filterdCollection]
+      : [...filteredCollection]
 
   return (
-    <div>
+    <main>
       <Header />
       <NavBar />
-      <h1>This is the Collection</h1>
-      <Search onSearch={handleSearch} />
+      <h1>Current Collection</h1>
+      <Search onSearch={handleTitleSearch} />
       <br></br>
       <Sort
         sortCategory={sortCategory}
@@ -56,7 +56,7 @@ function ArtExhibit() {
         options={sortOptions}
       />
       <ArtList artPieces={sortedAndFilteredListings} />
-    </div>
+    </main>
   )
 }
 

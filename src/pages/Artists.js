@@ -1,16 +1,44 @@
-import React from "react"
-import { useNavigate } from "react-router-dom"
+import React, { useEffect, useState } from "react"
 import NavBar from "../components/NavBar"
 import Header from "../components/Header"
+import Search from "../components/Search"
 
 function Artists() {
+  const [artists, setArtists] = useState([])
+  const [search, setSearch] = useState("")
+
+  useEffect(() => {
+    fetch("http://localhost:3001/artists")
+      .then((response) => response.json())
+      .then((artistData) => setArtists(artistData))
+  }, [])
+
+  const filteredArtistCollection = artists.filter((artist) =>
+    artist.name.toLowerCase().includes(search.toLowerCase())
+  )
+
+  const artistList = filteredArtistCollection.map((artist) => {
+    return (
+      <li key={artist.id}>
+        <h2>{artist.name}</h2>
+        <p>Number of Pieces in the Collection: {artist.artworks.length}</p>
+      </li>
+    )
+  })
+
+  function handleArtistSearch(searchInput) {
+    setSearch(searchInput)
+  }
+
   return (
-    <div>
+    <main>
       <Header />
       <NavBar />
-      <h1>Artist Page </h1>
-      <ul>List of Genre</ul>
-    </div>
+      <h1>Artists on Display</h1>
+      <Search onSearch={handleArtistSearch} />
+      <br></br>
+      <ul>{artistList}</ul>
+    </main>
   )
 }
 
