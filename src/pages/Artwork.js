@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import NavBar from "../components/NavBar"
-import Header from "../components/Header"
+import { fetchArtwork } from "../services/fetcher"
 
 function Artwork() {
   const [artwork, setArtwork] = useState({})
@@ -9,8 +9,7 @@ function Artwork() {
   const artworkId = params.id
 
   useEffect(() => {
-    fetch(`http://localhost:3001/artworks/${artworkId}`)
-      .then((response) => response.json())
+    fetchArtwork(artworkId)
       .then((artData) => setArtwork(artData))
       .catch((error) => console.error(error))
   }, [artworkId])
@@ -21,7 +20,6 @@ function Artwork() {
 
   return (
     <div className="artwork-page">
-      <Header />
       <NavBar />
       <main className="artwork-details">
         <article className="text-elements">

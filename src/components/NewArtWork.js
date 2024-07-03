@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react"
+import ArtForm from "./ArtForm"
 import {
   addNewArtwork,
   createArtist,
   createGenre,
+  fetchArtists,
+  fetchGenres,
   updateArtists,
   updateGenre,
 } from "../services/fetcher"
 
-function NewArtWorkForm({ isOpen, onClose, onAddNewArt }) {
+function NewArtWork({ isOpen, onClose, onAddNewArt }) {
   const [formData, setFormData] = useState({
     title: "",
     artist: "",
@@ -22,15 +25,12 @@ function NewArtWorkForm({ isOpen, onClose, onAddNewArt }) {
   const [genres, setGenres] = useState([])
 
   useEffect(() => {
-    Promise.all([
-      fetch("http://localhost:3001/artists").then((response) =>
-        response.json()
-      ),
-      fetch("http://localhost:3001/genres").then((response) => response.json()),
-    ]).then(([artistsData, genresData]) => {
-      setArtists(artistsData)
-      setGenres(genresData)
-    })
+    Promise.all([fetchArtists(), fetchGenres()]).then(
+      ([artistsData, genresData]) => {
+        setArtists(artistsData)
+        setGenres(genresData)
+      }
+    )
   }, [])
 
   const handleFormInput = (event) => {
@@ -104,67 +104,14 @@ function NewArtWorkForm({ isOpen, onClose, onAddNewArt }) {
           &times;
         </span>
         <h2>Add New Art Piece</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={formData.title}
-            onChange={handleFormInput}
-            required
-          />
-          <input
-            type="text"
-            name="artist"
-            placeholder="Artist"
-            value={formData.artist}
-            onChange={handleFormInput}
-            required
-          />
-          <input
-            type="number"
-            name="year"
-            placeholder="Year"
-            value={formData.year}
-            onChange={handleFormInput}
-            required
-          />
-          <input
-            type="text"
-            name="medium"
-            placeholder="Medium"
-            value={formData.medium}
-            onChange={handleFormInput}
-            required
-          />
-          <input
-            type="text"
-            name="genre"
-            placeholder="Genre"
-            value={formData.genre}
-            onChange={handleFormInput}
-            required
-          />
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleFormInput}
-            required
-          />
-          <input
-            type="url"
-            name="image"
-            placeholder="Image URL"
-            value={formData.image}
-            onChange={handleFormInput}
-            required
-          />
-          <button type="submit">Add Art Piece</button>
-        </form>
+        <ArtForm
+          formData={formData}
+          onFormInput={handleFormInput}
+          onFormSubmit={handleSubmit}
+        />
       </div>
     </div>
   )
 }
 
-export default NewArtWorkForm
+export default NewArtWork

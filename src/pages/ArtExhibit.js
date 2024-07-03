@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import NavBar from "../components/NavBar"
-import Header from "../components/Header"
 import Sort from "../components/Sort"
 import Search from "../components/Search"
 import ArtList from "../components/ArtList"
-import NewArtWorkForm from "../components/NewArtWorkForm"
+import NewArtWork from "../components/NewArtWork"
+import { fetchArtworks } from "../services/fetcher"
 
 const sortOptions = [
   { value: "all", label: "All" },
@@ -19,9 +19,9 @@ function ArtExhibit() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
-    fetch("http://localhost:3001/artworks")
-      .then((response) => response.json())
+    fetchArtworks()
       .then((artData) => setArtPieces(artData))
+      .catch((error) => console.error("Error fetching artworks:", error))
   }, [])
 
   function handleTitleSearch(searchInput) {
@@ -51,7 +51,6 @@ function ArtExhibit() {
 
   return (
     <main>
-      <Header />
       <NavBar />
       <h1>The Current Exhibit</h1>
       <Search onSearch={handleTitleSearch} />
@@ -64,7 +63,7 @@ function ArtExhibit() {
       <hr />
       <button onClick={() => setIsModalOpen(true)}>Add New Art Piece</button>
       <ArtList artPieces={sortedAndFilteredListings} />
-      <NewArtWorkForm
+      <NewArtWork
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(!isModalOpen)}
         onAddNewArt={handleNewArtwork}

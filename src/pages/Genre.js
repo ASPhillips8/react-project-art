@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import NavBar from "../components/NavBar"
-import Header from "../components/Header"
 import Search from "../components/Search"
+import { fetchGenres } from "../services/fetcher"
 
 function Genre() {
   const [genres, setGenres] = useState([])
   const [search, setSearch] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:3001/genres")
-      .then((response) => response.json())
+    fetchGenres()
       .then((genreData) => setGenres(genreData))
+      .catch((error) => console.error("Error setting artists:", error))
   }, [])
 
   function handleGenreSearch(searchInput) {
@@ -32,7 +32,6 @@ function Genre() {
 
   return (
     <main>
-      <Header />
       <NavBar />
       <h1>Genres on Display</h1>
       <Search onSearch={handleGenreSearch} />

@@ -1,6 +1,22 @@
-const artWorkUrl = "http://localhost:3001/artworks"
+const artWorkUrl = "http://localhost:3001/artworks/"
 const artistUrl = "http://localhost:3001/artists/"
 const genreUrl = "http://localhost:3001/genres/"
+
+function fetchArtworks() {
+  return fetch(artWorkUrl).then((response) => response.json())
+}
+
+function fetchArtists() {
+  return fetch(artistUrl).then((response) => response.json())
+}
+
+function fetchGenres() {
+  return fetch(genreUrl).then((response) => response.json())
+}
+
+function fetchArtwork(id) {
+  return fetch(artWorkUrl + id).then((response) => response.json())
+}
 
 function createArtist(artist) {
   return fetch(artistUrl, {
@@ -54,4 +70,14 @@ function addNewArtwork(newArtWork) {
   }).then((response) => response.json())
 }
 
-export { createArtist, createGenre, updateArtists, updateGenre, addNewArtwork }
+export {
+  fetchArtworks,
+  fetchArtists,
+  fetchGenres,
+  fetchArtwork,
+  createArtist,
+  createGenre,
+  updateArtists,
+  updateGenre,
+  addNewArtwork,
+}

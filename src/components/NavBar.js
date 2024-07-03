@@ -5,7 +5,7 @@ import "./NavBar.css"
 function NavBar() {
   return (
     <nav className="nav">
-      <NavLink to="/artworks" className="navbar">
+      <NavLink to="/art-exhibit" className="navbar">
         Home
       </NavLink>
       <NavLink to="/artists" className="navbar">
@@ -13,6 +13,9 @@ function NavBar() {
       </NavLink>
       <NavLink to="/genres" className="navbar">
         Genres
+      </NavLink>
+      <NavLink to="/" className="navbar exit-exhibit">
+        Exit Exhibit
       </NavLink>
     </nav>
   )
