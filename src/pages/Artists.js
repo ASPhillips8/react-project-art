@@ -32,7 +32,6 @@ function Artists() {
 
   return (
     <main>
-      <Header />
       <NavBar />
       <h1>Artists on Display</h1>
       <Search onSearch={handleArtistSearch} />

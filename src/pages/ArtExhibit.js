@@ -51,7 +51,6 @@ function ArtExhibit() {
 
   return (
     <main>
-      <Header />
       <NavBar />
       <h1>The Current Exhibit</h1>
       <Search onSearch={handleTitleSearch} />

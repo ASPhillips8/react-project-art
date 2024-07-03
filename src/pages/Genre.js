@@ -32,7 +32,6 @@ function Genre() {
 
   return (
     <main>
-      <Header />
       <NavBar />
       <h1>Genres on Display</h1>
       <Search onSearch={handleGenreSearch} />

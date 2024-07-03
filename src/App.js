@@ -1,24 +1,28 @@
 import React from "react"
-import { Outlet, useLocation, Link } from "react-router-dom"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import Header from "./components/Header"
 
 function App() {
   const location = useLocation()
-  const isHomePage = location.pathname === "/"
+  const navigate = useNavigate()
+  const isLandingPage = location.pathname === "/"
+
+  function handleEnterClick() {
+    navigate("/art-exhibit")
+  }
 
   return (
     <div>
-      <Header>{!isHomePage ? <NavBar /> : null}</Header>
+      <Header>{!isLandingPage && <NavBar />}</Header>
       <main>
-        <Outlet />
-        {isHomePage && (
+        {isLandingPage ? (
           <div>
-            <p>Welcome to the Dr. Lumpy Art Collection!</p>
-            <button>
-              <Link to="/art-exhibit">Enter Art Exhibit</Link>
-            </button>
+            <h1>Welcome to the Dr. Lumpy Art Collection!</h1>
+            <button onClick={handleEnterClick}>Enter Art Exhibit</button>
           </div>
+        ) : (
+          <Outlet />
         )}
       </main>
     </div>

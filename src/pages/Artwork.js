@@ -21,7 +21,6 @@ function Artwork() {
 
   return (
     <div className="artwork-page">
-      <Header />
       <NavBar />
       <main className="artwork-details">
         <article className="text-elements">
