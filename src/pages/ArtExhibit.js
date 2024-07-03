@@ -24,7 +24,6 @@ function ArtExhibit() {
       .then((artData) => setArtPieces(artData))
   }, [])
 
-  console.log("artEx", artPieces)
   function handleTitleSearch(searchInput) {
     setSearch(searchInput)
   }
@@ -54,7 +53,7 @@ function ArtExhibit() {
     <main>
       <Header />
       <NavBar />
-      <h1>Current Collection</h1>
+      <h1>The Current Exhibit</h1>
       <Search onSearch={handleTitleSearch} />
       <br></br>
       <Sort
@@ -62,6 +61,7 @@ function ArtExhibit() {
         onSortCategory={handleSortCategoryChange}
         options={sortOptions}
       />
+      <hr />
       <button onClick={() => setIsModalOpen(true)}>Add New Art Piece</button>
       <ArtList artPieces={sortedAndFilteredListings} />
       <NewArtWorkForm
