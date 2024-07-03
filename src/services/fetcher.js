@@ -1,3 +1,5 @@
+// services.js
+
 const artWorkUrl = "http://localhost:3001/artworks"
 const artistUrl = "http://localhost:3001/artists/"
 const genreUrl = "http://localhost:3001/genres/"
@@ -54,4 +56,15 @@ function addNewArtwork(newArtWork) {
   }).then((response) => response.json())
 }
 
-export { createArtist, createGenre, updateArtists, updateGenre, addNewArtwork }
+function fetchArtworks() {
+  return fetch(artWorkUrl).then((response) => response.json())
+}
+
+export {
+  createArtist,
+  createGenre,
+  updateArtists,
+  updateGenre,
+  addNewArtwork,
+  fetchArtworks,
+}
