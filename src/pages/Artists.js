@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import NavBar from "../components/NavBar"
-import Header from "../components/Header"
 import Search from "../components/Search"
+import { fetchArtists } from "../services/fetcher"
 
 function Artists() {
   const [artists, setArtists] = useState([])
   const [search, setSearch] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:3001/artists")
-      .then((response) => response.json())
+    fetchArtists()
       .then((artistData) => setArtists(artistData))
+      .catch((error) => console.error("Error setting artists:", error))
   }, [])
 
   const filteredArtistCollection = artists.filter((artist) =>

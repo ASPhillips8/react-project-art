@@ -60,6 +60,14 @@ function fetchArtworks() {
   return fetch(artWorkUrl).then((response) => response.json())
 }
 
+function fetchArtists() {
+  return fetch(artistUrl).then((response) => response.json())
+}
+
+function fetchGenres() {
+  return fetch(genreUrl).then((response) => response.json())
+}
+
 export {
   createArtist,
   createGenre,
@@ -67,4 +75,6 @@ export {
   updateGenre,
   addNewArtwork,
   fetchArtworks,
+  fetchArtists,
+  fetchGenres,
 }
