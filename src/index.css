@@ -83,7 +83,7 @@ code {
 .modal {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align to top */
+  align-items: flex-start;
   position: fixed;
   top: 0;
   left: 0;
@@ -91,7 +91,7 @@ code {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  padding-top: 100px; /* Adjust padding to position modal content under the NavBar */
+  padding-top: 100px;
 }
 
 .modal-content {
@@ -120,4 +120,23 @@ textarea {
 button {
   padding: 10px 20px;
   cursor: pointer;
+}
+
+.header {
+  text-align: center;
+  background-color: #ec9191;
+  color: white;
+  padding: 1rem;
+}
+
+.header h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  margin-left: 10px;
 }

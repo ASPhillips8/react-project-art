@@ -14,6 +14,9 @@ function NavBar() {
       <NavLink to="/genres" className="navbar">
         Genres
       </NavLink>
+      <NavLink to="/" className="navbar exit-exhibit">
+        Exit Exhibit
+      </NavLink>
     </nav>
   )
 }

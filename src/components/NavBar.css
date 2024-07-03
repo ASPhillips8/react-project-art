@@ -1,18 +1,22 @@
 .nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  height: 60px; /* Adjust height as needed */
-  background-color: #333; /* Example background color */
+  height: 60px;
+  background-color: #333;
 }
 
 .navbar {
   text-decoration: none;
-  padding: 10px 20px; /* Adjust padding as needed */
-  margin: 0 10px; /* Adjust margin to add space between links */
+  padding: 10px 20px;
+  margin: 0 10px;
   color: white;
 }
 
 .navbar.active {
-  color: red; /* Example style for active link */
+  color: red;
+}
+
+.exit-exhibit {
+  margin-left: auto;
 }
