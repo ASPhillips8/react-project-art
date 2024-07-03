@@ -4,6 +4,8 @@ import {
   addNewArtwork,
   createArtist,
   createGenre,
+  fetchArtists,
+  fetchGenres,
   updateArtists,
   updateGenre,
 } from "../services/fetcher"
@@ -23,15 +25,12 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
   const [genres, setGenres] = useState([])
 
   useEffect(() => {
-    Promise.all([
-      fetch("http://localhost:3001/artists").then((response) =>
-        response.json()
-      ),
-      fetch("http://localhost:3001/genres").then((response) => response.json()),
-    ]).then(([artistsData, genresData]) => {
-      setArtists(artistsData)
-      setGenres(genresData)
-    })
+    Promise.all([fetchArtists(), fetchGenres()]).then(
+      ([artistsData, genresData]) => {
+        setArtists(artistsData)
+        setGenres(genresData)
+      }
+    )
   }, [])
 
   const handleFormInput = (event) => {
