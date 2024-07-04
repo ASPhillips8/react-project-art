@@ -3,13 +3,16 @@ import ArtForm from "./ArtForm"
 import "./newArtWork.css"
 import {
   addNewArtwork,
-  createArtist,
   createGenre,
   fetchArtists,
   fetchGenres,
   updateArtists,
   updateGenre,
 } from "../services/fetcher"
+import {
+  getOrCreateArtist,
+  updateArtistsWithArtwork,
+} from "../services/artistService"
 
 const initialFormData = {
   title: "",
@@ -34,15 +37,7 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    let artistEntry = artists.find((a) => a.name === formData.artist)
-    if (!artistEntry) {
-      artistEntry = {
-        id: (artists.length + 1).toString(),
-        name: formData.artist,
-        artworks: [],
-      }
-      await createArtist(artistEntry)
-    }
+    const artistEntry = await getOrCreateArtist(formData.artist, artists)
 
     let genreEntry = genres.find((g) => g.name === formData.genre)
     if (!genreEntry) {
@@ -67,8 +62,10 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
 
     const createdArtData = await addNewArtwork(newArt)
 
-    artistEntry.artworks.push(createdArtData.id)
-    await updateArtists(artistEntry.id, artistEntry)
+    await updateArtistsWithArtwork(artistEntry, createdArtData.id)
+
+    // artistEntry.artworks.push(createdArtData.id)
+    // await updateArtists(artistEntry.id, artistEntry)
 
     genreEntry.artworks.push(createdArtData.id)
     await updateGenre(genreEntry.id, genreEntry)

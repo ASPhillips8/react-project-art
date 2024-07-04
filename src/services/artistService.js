@@ -4,7 +4,7 @@ const getOrCreateArtist = async (artistNameInput, artists) => {
   let artistEntry = artists.find((artist) => artist.name === artistNameInput)
   if (!artistEntry) {
     artistEntry = {
-      id: (artist.length + 1).toString(),
+      id: (artists.length + 1).toString(),
       name: artistNameInput,
       artworks: [],
     }
