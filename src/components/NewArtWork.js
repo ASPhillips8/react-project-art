@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import ArtForm from "./ArtForm"
+import "./newArtWork.css"
 import {
   addNewArtwork,
   createArtist,
@@ -10,28 +11,20 @@ import {
   updateGenre,
 } from "../services/fetcher"
 
-function NewArtWork({ isOpen, onClose, onAddNewArt }) {
-  const [formData, setFormData] = useState({
-    title: "",
-    artist: "",
-    year: "",
-    medium: "",
-    genre: "",
-    description: "",
-    image: "",
-  })
+const initialFormData = {
+  title: "",
+  artist: "",
+  year: "",
+  medium: "",
+  genre: "",
+  description: "",
+  image: "",
+}
 
+function NewArtWork({ isOpen, onClose, onAddNewArt }) {
+  const [formData, setFormData] = useState(initialFormData)
   const [artists, setArtists] = useState([])
   const [genres, setGenres] = useState([])
-
-  useEffect(() => {
-    Promise.all([fetchArtists(), fetchGenres()]).then(
-      ([artistsData, genresData]) => {
-        setArtists(artistsData)
-        setGenres(genresData)
-      }
-    )
-  }, [])
 
   const handleFormInput = (event) => {
     const { name, value } = event.target
@@ -81,19 +74,18 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
     await updateGenre(genreEntry.id, genreEntry)
 
     onAddNewArt(createdArtData)
-
-    setFormData({
-      title: "",
-      artist: "",
-      year: "",
-      medium: "",
-      genre: "",
-      description: "",
-      image: "",
-    })
-
+    setFormData(initialFormData)
     onClose()
   }
+
+  useEffect(() => {
+    Promise.all([fetchArtists(), fetchGenres()]).then(
+      ([artistsData, genresData]) => {
+        setArtists(artistsData)
+        setGenres(genresData)
+      }
+    )
+  }, [])
 
   if (!isOpen) return null
 

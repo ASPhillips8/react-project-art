@@ -2,20 +2,24 @@ const artWorkUrl = "http://localhost:3001/artworks/"
 const artistUrl = "http://localhost:3001/artists/"
 const genreUrl = "http://localhost:3001/genres/"
 
+function getData(url) {
+  return fetch(url).then((response) => response.json())
+}
+
 function fetchArtworks() {
-  return fetch(artWorkUrl).then((response) => response.json())
+  return getData(artWorkUrl)
 }
 
 function fetchArtists() {
-  return fetch(artistUrl).then((response) => response.json())
+  return getData(artistUrl)
 }
 
 function fetchGenres() {
-  return fetch(genreUrl).then((response) => response.json())
+  return getData(genreUrl)
 }
 
 function fetchArtwork(id) {
-  return fetch(artWorkUrl + id).then((response) => response.json())
+  return getData(artWorkUrl + id)
 }
 
 function createArtist(artist) {
@@ -35,6 +39,16 @@ function createGenre(genre) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(genre),
+  }).then((response) => response.json())
+}
+
+function addNewArtwork(newArtWork) {
+  return fetch(artWorkUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newArtWork),
   }).then((response) => response.json())
 }
 
@@ -58,16 +72,6 @@ function updateGenre(id, genre) {
       body: JSON.stringify({ artworks: genre.artworks }),
     }).then((response) => response.json())
   }
-}
-
-function addNewArtwork(newArtWork) {
-  return fetch(artWorkUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newArtWork),
-  }).then((response) => response.json())
 }
 
 export {

@@ -33,7 +33,7 @@ function Artists() {
   return (
     <main>
       <NavBar />
-      <h1>Artists on Display</h1>
+      <h1 className="pages-heading">Artists on Display</h1>
       <Search onSearch={handleArtistSearch} />
       <br></br>
       <ul>{artistList}</ul>

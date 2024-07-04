@@ -52,7 +52,7 @@ function ArtExhibit() {
   return (
     <main>
       <NavBar />
-      <h1>The Current Exhibit</h1>
+      <h1 className="pages-heading">The Current Exhibit</h1>
       <Search onSearch={handleTitleSearch} />
       <br></br>
       <Sort

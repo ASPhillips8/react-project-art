@@ -17,8 +17,9 @@ function App() {
       <Header>{!isLandingPage && <NavBar />}</Header>
       <main>
         {isLandingPage ? (
-          <div>
+          <div className="main-container">
             <h1>Welcome to the Dr. Lumpy Art Collection!</h1>
+            <h3> PHD ...?</h3>
             <button onClick={handleEnterClick}>Enter Art Exhibit</button>
           </div>
         ) : (

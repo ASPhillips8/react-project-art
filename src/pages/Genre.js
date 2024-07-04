@@ -33,7 +33,7 @@ function Genre() {
   return (
     <main>
       <NavBar />
-      <h1>Genres on Display</h1>
+      <h1 className="pages-heading">Genres on Display</h1>
       <Search onSearch={handleGenreSearch} />
       <br></br>
       <ul>{genreList}</ul>
