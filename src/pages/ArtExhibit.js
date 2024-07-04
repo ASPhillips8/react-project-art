@@ -18,12 +18,6 @@ function ArtExhibit() {
   const [sortCategory, setSortCategory] = useState("all")
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  useEffect(() => {
-    fetchArtworks()
-      .then((artData) => setArtPieces(artData))
-      .catch((error) => console.error("Error fetching artworks:", error))
-  }, [])
-
   function handleTitleSearch(searchInput) {
     setSearch(searchInput)
   }
@@ -48,6 +42,12 @@ function ArtExhibit() {
           return categoryA.localeCompare(categoryB)
         })
       : [...filteredCollection]
+
+  useEffect(() => {
+    fetchArtworks()
+      .then((artData) => setArtPieces(artData))
+      .catch((error) => console.error("Error fetching artworks:", error))
+  }, [])
 
   return (
     <main>
