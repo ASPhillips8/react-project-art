@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import NavBar from "../components/NavBar"
 import { fetchArtwork } from "../services/fetcher"
 
@@ -31,6 +31,10 @@ function Artwork() {
         <h2>{artwork.artist}</h2>
         <div className="image-container">
           <img src={artwork.image} alt={artwork.title} />
+          <br />
+          <Link to="/art-exhibit">
+            <button>Back to the Exhibit</button>
+          </Link>
         </div>
       </main>
     </div>
