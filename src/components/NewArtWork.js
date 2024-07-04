@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react"
 import ArtForm from "./ArtForm"
 import "./newArtWork.css"
-import {
-  addNewArtwork,
-  createGenre,
-  fetchArtists,
-  fetchGenres,
-  updateArtists,
-  updateGenre,
-} from "../services/fetcher"
+import { fetchArtists, fetchGenres } from "../services/fetcher"
 import {
   getOrCreateArtist,
   updateArtistsWithArtwork,
 } from "../services/artistService"
+import {
+  getOrCreateGenre,
+  updateGenreWithArtwork,
+} from "../services/genreService"
+import { createArtwork } from "../services/artworkService"
 
 const initialFormData = {
   title: "",
@@ -38,16 +36,7 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
     event.preventDefault()
 
     const artistEntry = await getOrCreateArtist(formData.artist, artists)
-
-    let genreEntry = genres.find((g) => g.name === formData.genre)
-    if (!genreEntry) {
-      genreEntry = {
-        id: (genres.length + 1).toString(),
-        name: formData.genre,
-        artworks: [],
-      }
-      await createGenre(genreEntry)
-    }
+    const genreEntry = await getOrCreateGenre(formData.genre, genres)
 
     const newArt = {
       title: formData.title,
@@ -60,15 +49,10 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
       artistId: artistEntry.id,
     }
 
-    const createdArtData = await addNewArtwork(newArt)
+    const createdArtData = await createArtwork(newArt)
 
     await updateArtistsWithArtwork(artistEntry, createdArtData.id)
-
-    // artistEntry.artworks.push(createdArtData.id)
-    // await updateArtists(artistEntry.id, artistEntry)
-
-    genreEntry.artworks.push(createdArtData.id)
-    await updateGenre(genreEntry.id, genreEntry)
+    await updateGenreWithArtwork(genreEntry, createdArtData.id)
 
     onAddNewArt(createdArtData)
     setFormData(initialFormData)
