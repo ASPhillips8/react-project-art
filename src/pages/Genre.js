@@ -10,10 +10,10 @@ function Genre() {
   useEffect(() => {
     fetchGenres()
       .then((genreData) => setGenres(genreData))
-      .catch((error) => console.error("Error setting artists:", error))
+      .catch((error) => console.error("Error setting genres:", error))
   }, [])
 
-  function handleGenreSearch(searchInput) {
+  const handleGenreSearch = (searchInput) => {
     setSearch(searchInput)
   }
 
@@ -21,22 +21,24 @@ function Genre() {
     genre.name.toLowerCase().includes(search.toLowerCase())
   )
 
-  const genreList = filteredGenreCollection.map((genre) => {
-    return (
-      <li key={genre.id}>
-        <h2>{genre.name}</h2>
-        <p>Number of Pieces in the Collection: {genre.artworks.length}</p>
-      </li>
-    )
-  })
+  const GenreList = () => (
+    <ul>
+      {filteredGenreCollection.map((genre) => (
+        <li key={genre.id}>
+          <h2>{genre.name}</h2>
+          <p>Number of Pieces in the Collection: {genre.artworks.length}</p>
+        </li>
+      ))}
+    </ul>
+  )
 
   return (
     <main>
       <NavBar />
       <h1 className="pages-heading">Genres on Display</h1>
       <Search onSearch={handleGenreSearch} />
-      <br></br>
-      <ul>{genreList}</ul>
+      <br />
+      {genres.length > 0 ? <GenreList /> : <p>No genres found.</p>}
     </main>
   )
 }
