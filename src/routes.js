@@ -4,6 +4,7 @@ import Artists from "./pages/Artists"
 import Genre from "./pages/Genre"
 import Artwork from "./pages/Artwork"
 import ErrorPage from "./pages/ErrorPage"
+import HomePage from "./pages/Home"
 
 const routes = [
   {
@@ -11,6 +12,10 @@ const routes = [
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
       {
         path: "art-exhibit",
         element: <ArtExhibit />,

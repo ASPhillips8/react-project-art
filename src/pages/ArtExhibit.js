@@ -18,12 +18,6 @@ function ArtExhibit() {
   const [sortCategory, setSortCategory] = useState("all")
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  useEffect(() => {
-    fetchArtworks()
-      .then((artData) => setArtPieces(artData))
-      .catch((error) => console.error("Error fetching artworks:", error))
-  }, [])
-
   function handleTitleSearch(searchInput) {
     setSearch(searchInput)
   }
@@ -49,10 +43,16 @@ function ArtExhibit() {
         })
       : [...filteredCollection]
 
+  useEffect(() => {
+    fetchArtworks()
+      .then((artData) => setArtPieces(artData))
+      .catch((error) => console.error("Error fetching artworks:", error))
+  }, [])
+
   return (
     <main>
       <NavBar />
-      <h1>The Current Exhibit</h1>
+      <h1 className="pages-heading">The Current Exhibit</h1>
       <Search onSearch={handleTitleSearch} />
       <br></br>
       <Sort
