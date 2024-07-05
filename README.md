@@ -30,8 +30,6 @@ This project is a React-based web application that allows users to explore a cur
 
 ## Usage
 
-![Demo GIF](./docs/demo.gif)
-
 1. Explore the homepage to learn about the Dr. Lumpy Art Collection and click "Enter Art Exhibit" to view artworks.
 2. Navigate through different pages using the navigation bar (Art Exhibit, Artists, Genres).
 3. Use Search functionalities on the ArtExhibit page to find specific artworks based off of title.
