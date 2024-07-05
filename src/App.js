@@ -1,15 +1,11 @@
 import React from "react"
-import { Outlet, useLocation } from "react-router-dom"
-import NavBar from "./components/NavBar"
+import { Outlet } from "react-router-dom"
 import Header from "./components/Header"
 
 function App() {
-  const location = useLocation()
-  const isLandingPage = location.pathname === "/"
-
   return (
     <div>
-      <Header>{!isLandingPage && <NavBar />}</Header>
+      <Header />
       <main>
         <Outlet />
       </main>
