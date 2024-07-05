@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# React Project Art
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This project is a React-based web application that allows users to explore a curated collection of artworks. It includes features such as browsing artworks, sorting by different criteria, searching for specific artworks, and adding new artworks to the collection.
 
-In the project directory, you can run:
+## Setup
 
-### `npm start`
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ASPhillips8/react-project-art.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd react-project-art
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Start the JSON Server (for mock backend):**
+   ```bash
+   npm run server
+   ```
+5. **Start the React application:**
+   ```bash
+   npm start
+   ```
+6. **Open your browser and navigate to http://localhost:3000 to view and use the application.**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Demo GIF](./docs/demo.gif)
 
-### `npm test`
+1. Explore the homepage to learn about the Dr. Lumpy Art Collection and click "Enter Art Exhibit" to view artworks.
+2. Navigate through different pages using the navigation bar (Art Exhibit, Artists, Genres).
+3. Use Search functionalities on the ArtExhibit page to find specific artworks based off of title.
+4. Use Sort functionalities to display artworks based medium or alphabetically by title.
+5. Click on artworks to view more details of a particular piece which include the artist, year, genre, and a description. Also navigate back to Art Exhibit page by using Back to the Exhibit button.
+6. Add to the collection using button on Art Exhibit page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- **Home Page**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - Introduction to the art collection.
+  - Navigation to art exhibit page of the application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Art Exhibit Page**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - Displays a collection of artworks.
+  - Includes functionality to add new artworks.
+  - Allows searching for artworks by title.
+  - Supports sorting artworks by medium, artist, etc.
 
-### `npm run eject`
+- **Artwork Details Page**:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - Shows detailed information about a selected artwork.
+  - Includes artwork title, artist, year, description, genre, and image.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Artists Page**:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  - Lists artists featured in the collection.
+  - Provides an account of the number of pieces each artist has in the collection
+  - Supports searching for artists by name.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Genres Page**:
+  - Displays different genres of art.
+  - Provides number of examples the collection has of each genre
+  - Allows users to explore artworks by genre.
 
-## Learn More
+## Technologies Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+• React
+• React Router
+• json-server (mock backend)
+• CSS (for styling)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+- public/: Public assets and static files.
+- src/: Source files.
+  - components/: Reusable UI components.
+  - pages/: Page components representing different views.
+  - services/: Service files for API interactions.
+  - routes.js: Application routes.
+  - App.js: Main application component.
+  - index.js: Entry point for the React application.
+  - index.css: Global styles.
+- db.json: Mock database file.
+- README.md: Project documentation.
+- user-stories.md: User stories and requirements.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Future Enhancements
 
-### Analyzing the Bundle Size
+• Implement of user favorite page that displays all pieces liked by a user
+• Interactive feature that will display all pieces of a particular artist
+• Interactive feature that will display all pieces of a particular genre as well as details of that particular genre
+• Implement of API to generate all of collection to allow for a more immersive gallery
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Credits
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+• Art Institute of Chicago API for providing initial artwork data.
