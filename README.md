@@ -28,6 +28,8 @@ This project is a React-based web application that allows users to explore a cur
    ```
 6. **Open your browser and navigate to http://localhost:3000 to view and use the application.**
 
+![ScreenRecording2024-07-05at2 12 52AM-ezgif com-video-to-gif-converter](https://github.com/ASPhillips8/react-project-art/assets/168675272/cee33e9d-f267-4585-81c4-9dd212047c37)
+
 ## Usage
 
 1. Explore the homepage to learn about the Dr. Lumpy Art Collection and click "Enter Art Exhibit" to view artworks.
