@@ -26,6 +26,11 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
   const [formData, setFormData] = useState(initialFormData)
   const [artists, setArtists] = useState([])
   const [genres, setGenres] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
 
   const handleFormInput = (event) => {
     const { name, value } = event.target
@@ -68,21 +73,24 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
     )
   }, [])
 
-  if (!isOpen) return null
-
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close-button" onClick={onClose}>
-          &times;
-        </span>
-        <h2>Add New Art Piece</h2>
-        <ArtForm
-          formData={formData}
-          onFormInput={handleFormInput}
-          onFormSubmit={handleSubmit}
-        />
-      </div>
+    <div>
+      <button onClick={() => setIsModalOpen(true)}>Add New Art Piece</button>
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-button" onClick={closeModal}>
+              &times;
+            </span>
+            <h2>Add New Art Piece</h2>
+            <ArtForm
+              formData={formData}
+              onFormInput={handleFormInput}
+              onFormSubmit={handleSubmit}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

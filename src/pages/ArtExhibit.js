@@ -16,7 +16,6 @@ function ArtExhibit() {
   const [artPieces, setArtPieces] = useState([])
   const [search, setSearch] = useState("")
   const [sortCategory, setSortCategory] = useState("all")
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
   function handleTitleSearch(searchInput) {
     setSearch(searchInput)
@@ -61,13 +60,8 @@ function ArtExhibit() {
         options={sortOptions}
       />
       <hr />
-      <button onClick={() => setIsModalOpen(true)}>Add New Art Piece</button>
+      <NewArtWork onAddNewArt={handleNewArtwork} />
       <ArtList artPieces={sortedAndFilteredListings} />
-      <NewArtWork
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(!isModalOpen)}
-        onAddNewArt={handleNewArtwork}
-      />
     </main>
   )
 }
