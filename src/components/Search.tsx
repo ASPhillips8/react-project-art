@@ -1,8 +1,12 @@
 import React from "react"
 
-function Search({ onSearch }) {
+interface SearchProps {
+  onSearch: (query: string) => void
+}
+
+const Search: React.FC<SearchProps> = ({ onSearch }) => {
   return (
-    <div className="searchbar">
+    <div className="search_bar">
       <label htmlFor="search">Search Collection:</label>
       <input
         type="text"
