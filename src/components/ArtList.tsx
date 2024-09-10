@@ -6,7 +6,7 @@ interface ArtListProps {
   artPieces: ArtPiece[]
 }
 
-function ArtList({ artPieces }: ArtListProps) {
+const ArtList: React.FC<ArtListProps> = ({ artPieces }) => {
   const displayedArt = artPieces.map((artPiece) => {
     return <ArtCard key={artPiece.id} artPiece={artPiece}></ArtCard>
   })
