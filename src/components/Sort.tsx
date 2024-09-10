@@ -1,7 +1,22 @@
 import React from "react"
 
-const Sort = ({ sortCategory, onSortCategory, options }) => {
-  const handleSortChange = (event) => {
+interface Option {
+  value: string
+  label: string
+}
+
+interface SortProps {
+  sortCategory: string
+  onSortCategory: (category: string) => void
+  options: Option[]
+}
+
+const Sort: React.FC<SortProps> = ({
+  sortCategory,
+  onSortCategory,
+  options,
+}) => {
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onSortCategory(event.target.value)
   }
 
