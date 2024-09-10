@@ -1,9 +1,9 @@
-import App from "./App"
+import App from "./App.tsx"
 import ArtExhibit from "./pages/ArtExhibit"
 import Artists from "./pages/Artists"
 import Genre from "./pages/Genre"
 import Artwork from "./pages/Artwork"
-import ErrorPage from "./pages/ErrorPage"
+import ErrorPage from "./pages/ErrorPage.tsx"
 import HomePage from "./pages/Home"
 
 const routes = [
