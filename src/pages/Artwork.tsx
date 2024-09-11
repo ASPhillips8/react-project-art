@@ -3,8 +3,18 @@ import { useParams, Link } from "react-router-dom"
 import NavBar from "../components/NavBar"
 import { fetchArtwork } from "../services/fetcher"
 
-function Artwork() {
-  const [artwork, setArtwork] = useState({})
+interface ArtWorkProps {
+  id: string
+  title: string
+  description: string
+  genre: string
+  year: number
+  image: string
+  artist: string
+}
+
+const Artwork: React.FC = () => {
+  const [artwork, setArtwork] = useState<ArtWorkProps | null>(null)
   const params = useParams()
   const artworkId = params.id
 
@@ -14,7 +24,7 @@ function Artwork() {
       .catch((error) => console.error(error))
   }, [artworkId])
 
-  if (!artwork.title) {
+  if (!artwork) {
     return <h1>Loading....</h1>
   }
 
