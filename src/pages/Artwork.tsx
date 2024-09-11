@@ -2,19 +2,10 @@ import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import NavBar from "../components/NavBar"
 import { fetchArtwork } from "../services/fetcher"
-
-interface ArtWorkProps {
-  id: string
-  title: string
-  description: string
-  genre: string
-  year: number
-  image: string
-  artist: string
-}
+import { ArtPiece } from "../types"
 
 const Artwork: React.FC = () => {
-  const [artwork, setArtwork] = useState<ArtWorkProps | null>(null)
+  const [artwork, setArtwork] = useState<ArtPiece | null>(null)
   const params = useParams()
   const artworkId = params.id
 
