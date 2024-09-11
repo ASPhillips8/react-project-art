@@ -1,13 +1,16 @@
 import React from "react"
+import { ArtPiece } from "../types"
+
+type SortCategory = keyof ArtPiece | "all"
 
 interface Option {
-  value: string
+  value: SortCategory
   label: string
 }
 
 interface SortProps {
-  sortCategory: string
-  onSortCategory: (category: string) => void
+  sortCategory: SortCategory
+  onSortCategory: (category: SortCategory) => void
   options: Option[]
 }
 
@@ -17,7 +20,7 @@ const Sort: React.FC<SortProps> = ({
   options,
 }) => {
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onSortCategory(event.target.value)
+    onSortCategory(event.target.value as SortCategory)
   }
 
   return (
