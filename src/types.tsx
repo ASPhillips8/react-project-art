@@ -1,5 +1,5 @@
 export interface ArtPiece {
-  id: string
+  id?: string
   title: string
   description: string
   genre: string
