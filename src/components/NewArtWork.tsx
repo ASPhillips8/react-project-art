@@ -13,23 +13,11 @@ import {
 import { createArtwork } from "../services/artworkService"
 import { ArtPiece } from "../types"
 
-// interface ArtFromValues extends ArtPiece {}
 interface NewArtWorkProps {
   onAddNewArt: (artwork: ArtPiece) => void
 }
 
-// const initialFormData = {
-//   title: "",
-//   artist: "",
-//   year: "",
-//   medium: "",
-//   genre: "",
-//   description: "",
-//   image: "",
-// }
-
 const NewArtWork: React.FC<NewArtWorkProps> = ({ onAddNewArt }) => {
-  // const [formData, setFormData] = useState(initialFormData)
   const [artists, setArtists] = useState([])
   const [genres, setGenres] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -38,14 +26,8 @@ const NewArtWork: React.FC<NewArtWorkProps> = ({ onAddNewArt }) => {
     setIsModalOpen(false)
   }
 
-  // const handleFormInput = (event) => {
-  //   const { name, value } = event.target
-  //   setFormData({ ...formData, [name]: value })
-  // }
-
   const handleSubmit = async (data: ArtPiece) => {
-    // event.preventDefault()
-
+  
     const artistEntry = await getOrCreateArtist(data.artist, artists)
     const genreEntry = await getOrCreateGenre(data.genre, genres)
 
@@ -66,7 +48,6 @@ const NewArtWork: React.FC<NewArtWorkProps> = ({ onAddNewArt }) => {
     await updateGenreWithArtwork(genreEntry, createdArtData.id)
 
     onAddNewArt(createdArtData)
-    // setFormData(initialFormData)
     closeModal()
   }
 
@@ -90,8 +71,6 @@ const NewArtWork: React.FC<NewArtWorkProps> = ({ onAddNewArt }) => {
             </span>
             <h2>Add New Art Piece</h2>
             <ArtForm
-              // formData={formData}
-              // onFormInput={handleFormInput}
               onFormSubmit={handleSubmit}
             />
           </div>
