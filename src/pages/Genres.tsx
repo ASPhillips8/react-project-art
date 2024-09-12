@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react"
 import NavBar from "../components/NavBar"
 import Search from "../components/Search"
 import { fetchGenres } from "../services/fetcher"
+import { Genre } from "../types"
 
-interface GenreProps {
-  id: number
-  name: string
-  artworks: string[]
-}
+interface GenreProps extends Genre {}
 
-const Genre: React.FC = () => {
+const Genres: React.FC = () => {
   const [genres, setGenres] = useState<GenreProps[]>([])
   const [search, setSearch] = useState("")
 
@@ -49,4 +46,4 @@ const Genre: React.FC = () => {
   )
 }
 
-export default Genre
+export default Genres

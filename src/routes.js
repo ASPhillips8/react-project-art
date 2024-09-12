@@ -1,8 +1,8 @@
 import App from "./App.tsx"
 import ArtExhibit from "./pages/ArtExhibit"
 import Artists from "./pages/Artists"
-import Genre from "./pages/Genre"
 import Artwork from "./pages/Artwork"
+import Genres from "./pages/Genres.tsx"
 import ErrorPage from "./pages/ErrorPage.tsx"
 import HomePage from "./pages/Home"
 
@@ -26,7 +26,7 @@ const routes = [
       },
       {
         path: "genres",
-        element: <Genre />,
+        element: <Genres />,
       },
       {
         path: "artwork/:id",
