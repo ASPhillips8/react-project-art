@@ -1,6 +1,7 @@
 import React from "react"
 import { useForm, FieldErrors } from "react-hook-form"
 import { ArtPiece } from "../types"
+import { DevTool } from "@hookform/devtools"
 
 interface ArtFromValues extends ArtPiece {}
 interface ArtFormProps {
@@ -18,9 +19,10 @@ const ArtForm: React.FC<ArtFormProps> = ({ onFormSubmit }) => {
       description: "",
       image: "",
     },
+    mode: "onSubmit",
   })
 
-  const { register, handleSubmit, formState, reset } = form
+  const { register, handleSubmit, formState, reset, control } = form
   const { errors } = formState
 
   const onSubmit = (data: ArtFromValues) => {
@@ -28,95 +30,125 @@ const ArtForm: React.FC<ArtFormProps> = ({ onFormSubmit }) => {
     reset()
   }
 
-  // const onError = (errors: FieldErrors<ArtFromValues>) => {
-  //   console.log("Form errors", errors)
-  // }
+  const renderError = (fieldError: any) =>
+    fieldError && <span>{fieldError.message}</span>
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="form-control">
-        <input
-          type="text"
-          id="title"
-          placeholder="Title"
-          {...register("title", { required: "Title is required" })}
-        />
-        <p>{errors.title && <span>{errors.title.message}</span>}</p>
-      </div>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-control">
+          <input
+            type="text"
+            id="title"
+            placeholder="Title"
+            {...register("title", {
+              required: {
+                value: true,
+                message: "Title is required",
+              },
+            })}
+          />
+          <p>{renderError(errors.title)}</p>
+        </div>
 
-      <div className="form-control">
-        <input
-          type="text"
-          id="artist"
-          placeholder="Artist"
-          {...register("artist", { required: "Artist is required" })}
-        />
-        <p>{errors.artist && <span>{errors.artist.message}</span>}</p>
-      </div>
+        <div className="form-control">
+          <input
+            type="text"
+            id="artist"
+            placeholder="Artist"
+            {...register("artist", {
+              required: {
+                value: true,
+                message: "Artist is required",
+              },
+            })}
+          />
+          <p>{renderError(errors.artist)}</p>
+        </div>
 
-      <div className="form-control">
-        <input
-          type="number"
-          id="year"
-          placeholder="Year"
-          {...register("year", {
-            valueAsNumber: true,
-            required: {
-              value: true,
-              message: "Enter a valid year",
-            },
-          })}
-        />
-        <p>{errors.year && <span>{errors.year.message}</span>}</p>
-      </div>
+        <div className="form-control">
+          <input
+            type="number"
+            id="year"
+            placeholder="Year"
+            {...register("year", {
+              valueAsNumber: true,
+              required: {
+                value: true,
+                message: "Enter a valid year",
+              },
+            })}
+          />
+          <p>{renderError(errors.year)}</p>
+        </div>
 
-      <div className="form-control">
-        <input
-          type="text"
-          id="medium"
-          placeholder="Medium"
-          {...register("medium", { required: "Medium is required" })}
-        />
-        <p>{errors.medium && <span>{errors.medium.message}</span>}</p>
-      </div>
+        <div className="form-control">
+          <input
+            type="text"
+            id="medium"
+            placeholder="Medium"
+            {...register("medium", {
+              required: {
+                value: true,
+                message: "Medium is required",
+              },
+            })}
+          />
+          <p>{renderError(errors.medium)}</p>
+        </div>
 
-      <div className="form-control">
-        <input
-          type="text"
-          id="genre"
-          placeholder="Genre"
-          {...register("genre", { required: "Genre is required" })}
-        />
-        <p>{errors.genre && <span>{errors.genre.message}</span>}</p>
-      </div>
+        <div className="form-control">
+          <input
+            type="text"
+            id="genre"
+            placeholder="Genre"
+            {...register("genre", {
+              required: {
+                value: true,
+                message: "Genre is required",
+              },
+            })}
+          />
+          <p>{renderError(errors.genre)}</p>
+        </div>
 
-      <div className="form-control">
-        <textarea
-          id="description"
-          placeholder="Description"
-          {...register("description", { required: "Description is required" })}
-        />
-        <p>{errors.description && <span>{errors.description.message}</span>}</p>
-      </div>
+        <div className="form-control">
+          <textarea
+            id="description"
+            placeholder="Description"
+            {...register("description", {
+              required: {
+                value: true,
+                message: "Description is required",
+              },
+            })}
+          />
+          <p>{renderError(errors.description)}</p>
+        </div>
 
-      <div className="form-control">
-        <input
-          type="url"
-          id="image"
-          placeholder="Image URL"
-          {...register("image", {
-            required: "Image URL is required",
-            pattern: {
-              value: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
-              message: "Enter a valid URL",
-            },
-          })}
-        />
-        <p>{errors.image && <span>{errors.image.message}</span>}</p>
-      </div>
+        <div className="form-control">
+          <input
+            type="url"
+            id="image"
+            placeholder="Image URL"
+            {...register("image", {
+              required: {
+                value: true,
+                message: "Image URL is required",
+              },
+              pattern: {
+                value: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+                message: "Enter a valid URL",
+              },
+            })}
+          />
+          <p>{renderError(errors.image)}</p>
+        </div>
 
-      <button type="submit">Add Art Piece</button>
-    </form>
+        <button type="submit">Add Art Piece</button>
+      </form>
+      <DevTool control={control} />
+    </div>
   )
 }
 
