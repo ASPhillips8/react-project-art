@@ -1,7 +1,6 @@
 import React from "react"
-import { useForm, FieldErrors } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { ArtPiece } from "../types"
-import { DevTool } from "@hookform/devtools"
 
 interface ArtFromValues extends ArtPiece {}
 interface ArtFormProps {
@@ -22,7 +21,7 @@ const ArtForm: React.FC<ArtFormProps> = ({ onFormSubmit }) => {
     mode: "onSubmit",
   })
 
-  const { register, handleSubmit, formState, reset, control } = form
+  const { register, handleSubmit, formState, reset } = form
   const { errors } = formState
 
   const onSubmit = (data: ArtFromValues) => {
@@ -147,7 +146,6 @@ const ArtForm: React.FC<ArtFormProps> = ({ onFormSubmit }) => {
 
         <button type="submit">Add Art Piece</button>
       </form>
-      <DevTool control={control} />
     </div>
   )
 }
