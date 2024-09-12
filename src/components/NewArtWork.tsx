@@ -27,7 +27,6 @@ const NewArtWork: React.FC<NewArtWorkProps> = ({ onAddNewArt }) => {
   }
 
   const handleSubmit = async (data: ArtPiece) => {
-  
     const artistEntry = await getOrCreateArtist(data.artist, artists)
     const genreEntry = await getOrCreateGenre(data.genre, genres)
 
@@ -70,9 +69,7 @@ const NewArtWork: React.FC<NewArtWorkProps> = ({ onAddNewArt }) => {
               &times;
             </span>
             <h2>Add New Art Piece</h2>
-            <ArtForm
-              onFormSubmit={handleSubmit}
-            />
+            <ArtForm onFormSubmit={handleSubmit} />
           </div>
         </div>
       )}
