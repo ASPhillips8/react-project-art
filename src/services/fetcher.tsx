@@ -54,7 +54,7 @@ function addNewArtwork(newArtWork: ArtPiece) {
   }).then((response) => response.json())
 }
 
-function updateArtists(id: string, artists: { artworks: ArtPiece[] }) {
+function updateArtists(id: string, artists: { artworks: string[] }) {
   return fetch(artistUrl + id, {
     method: "PATCH",
     headers: {
