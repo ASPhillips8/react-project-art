@@ -8,3 +8,15 @@ export interface ArtPiece {
   medium: string
   artist: string
 }
+
+export interface Artist {
+  id: string
+  name: string
+  artworks: string[]
+}
+
+export interface Genre {
+  id: string
+  name: string
+  artworks: string[]
+}
