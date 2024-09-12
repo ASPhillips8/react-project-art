@@ -1,6 +1,7 @@
 import { createGenre, updateGenre } from "./fetcher"
+import { Genre } from "../types"
 
-const getOrCreateGenre = async (genreNameInput, genres) => {
+const getOrCreateGenre = async (genreNameInput: string, genres: Genre[]) => {
   let genreEntry = genres.find((genre) => genre.name === genreNameInput)
   if (!genreEntry) {
     genreEntry = {
@@ -13,7 +14,7 @@ const getOrCreateGenre = async (genreNameInput, genres) => {
   return genreEntry
 }
 
-const updateGenreWithArtwork = async (genreEntry, artworkId) => {
+const updateGenreWithArtwork = async (genreEntry: Genre, artworkId: string) => {
   genreEntry.artworks.push(artworkId)
   await updateGenre(genreEntry.id, genreEntry)
 }
