@@ -5,28 +5,31 @@ import Search from "../components/Search"
 import ArtList from "../components/ArtList"
 import NewArtWork from "../components/NewArtWork"
 import { fetchArtworks } from "../services/fetcher"
+import { ArtPiece } from "../types"
 
-const sortOptions = [
+type SortCategory = keyof ArtPiece | "all"
+
+const sortOptions: { value: SortCategory; label: string }[] = [
   { value: "all", label: "All" },
   { value: "medium", label: "Medium" },
   { value: "title", label: "Title" },
 ]
 
-function ArtExhibit() {
-  const [artPieces, setArtPieces] = useState([])
+const ArtExhibit: React.FC = () => {
+  const [artPieces, setArtPieces] = useState<ArtPiece[]>([])
   const [search, setSearch] = useState("")
-  const [sortCategory, setSortCategory] = useState("all")
+  const [sortCategory, setSortCategory] = useState<SortCategory>("all")
 
-  function handleTitleSearch(searchInput) {
+  function handleTitleSearch(searchInput: string) {
     setSearch(searchInput)
   }
 
-  function handleSortCategoryChange(category) {
+  function handleSortCategoryChange(category: SortCategory) {
     setSortCategory(category)
   }
 
-  function handleNewArtwork(newArtwork) {
-    setArtPieces([...artPieces, newArtwork])
+  function handleNewArtwork(newArtwork: ArtPiece) {
+    setArtPieces((prevArtPieces) => [...artPieces, newArtwork])
   }
 
   const filteredCollection = artPieces.filter((artPiece) =>
@@ -36,9 +39,15 @@ function ArtExhibit() {
   const sortedAndFilteredListings =
     sortCategory !== "all"
       ? [...filteredCollection].sort((a, b) => {
-          const categoryA = a[sortCategory] ? a[sortCategory].toLowerCase() : ""
-          const categoryB = b[sortCategory] ? b[sortCategory].toLowerCase() : ""
-          return categoryA.localeCompare(categoryB)
+          const categoryA = a[sortCategory]
+          const categoryB = b[sortCategory]
+
+          const valueA =
+            typeof categoryA === "string" ? categoryA.toLowerCase() : ""
+          const valueB =
+            typeof categoryB === "string" ? categoryB.toLowerCase() : ""
+
+          return valueA.localeCompare(valueB)
         })
       : [...filteredCollection]
 

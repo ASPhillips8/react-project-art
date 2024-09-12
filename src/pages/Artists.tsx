@@ -3,8 +3,14 @@ import NavBar from "../components/NavBar"
 import Search from "../components/Search"
 import { fetchArtists } from "../services/fetcher"
 
-function Artists() {
-  const [artists, setArtists] = useState([])
+interface ArtistProps {
+  id: number
+  name: string
+  artworks: string[]
+}
+
+const Artists: React.FC = () => {
+  const [artists, setArtists] = useState<ArtistProps[]>([])
   const [search, setSearch] = useState("")
 
   useEffect(() => {
@@ -13,7 +19,7 @@ function Artists() {
       .catch((error) => console.error("Error setting artists:", error))
   }, [])
 
-  const handleArtistSearch = (searchInput) => {
+  const handleArtistSearch = (searchInput: string) => {
     setSearch(searchInput)
   }
 

@@ -1,9 +1,15 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./ArtCard.css"
+import { ArtPiece } from "../types"
 
-function ArtCard({ artPiece }) {
+interface ArtCardProps {
+  artPiece: ArtPiece
+}
+
+const ArtCard: React.FC<ArtCardProps> = ({ artPiece }) => {
   const { id, title, image, medium } = artPiece
+
   return (
     <li className="art-card">
       <Link to={`/artwork/${id}`}>

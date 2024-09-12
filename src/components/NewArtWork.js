@@ -22,7 +22,7 @@ const initialFormData = {
   image: "",
 }
 
-function NewArtWork({ isOpen, onClose, onAddNewArt }) {
+function NewArtWork({ onAddNewArt }) {
   const [formData, setFormData] = useState(initialFormData)
   const [artists, setArtists] = useState([])
   const [genres, setGenres] = useState([])
@@ -61,7 +61,7 @@ function NewArtWork({ isOpen, onClose, onAddNewArt }) {
 
     onAddNewArt(createdArtData)
     setFormData(initialFormData)
-    onClose()
+    closeModal()
   }
 
   useEffect(() => {

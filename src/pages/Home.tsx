@@ -1,7 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
-function HomePage() {
+const HomePage: React.FC = () => {
   const navigate = useNavigate()
 
   const handleEnterClick = () => navigate("/art-exhibit")

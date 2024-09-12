@@ -2,7 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import "./NavBar.css"
 
-function NavBar() {
+const NavBar: React.FC = () => {
   return (
     <nav className="nav">
       <NavLink to="/art-exhibit" className="navbar">

@@ -3,8 +3,14 @@ import NavBar from "../components/NavBar"
 import Search from "../components/Search"
 import { fetchGenres } from "../services/fetcher"
 
-function Genre() {
-  const [genres, setGenres] = useState([])
+interface GenreProps {
+  id: number
+  name: string
+  artworks: string[]
+}
+
+const Genre: React.FC = () => {
+  const [genres, setGenres] = useState<GenreProps[]>([])
   const [search, setSearch] = useState("")
 
   useEffect(() => {
@@ -13,7 +19,7 @@ function Genre() {
       .catch((error) => console.error("Error setting genres:", error))
   }, [])
 
-  const handleGenreSearch = (searchInput) => {
+  const handleGenreSearch = (searchInput: string) => {
     setSearch(searchInput)
   }
 
@@ -21,7 +27,7 @@ function Genre() {
     genre.name.toLowerCase().includes(search.toLowerCase())
   )
 
-  const GenreList = () => (
+  const GenreList: React.FC = () => (
     <ul>
       {filteredGenreCollection.map((genre) => (
         <li key={genre.id}>
