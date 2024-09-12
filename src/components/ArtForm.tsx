@@ -1,6 +1,6 @@
 import React from "react"
 
-function ArtForm({ formData, onFormInput, onFormSubmit }) {
+const ArtForm: React.FC = ({ formData, onFormInput, onFormSubmit }) => {
   return (
     <form onSubmit={onFormSubmit}>
       <input
