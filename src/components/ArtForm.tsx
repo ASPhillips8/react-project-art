@@ -1,63 +1,120 @@
 import React from "react"
+import { useForm, FieldErrors } from "react-hook-form"
+import { ArtPiece } from "../types"
 
-const ArtForm: React.FC = ({ formData, onFormInput, onFormSubmit }) => {
+interface ArtFromValues extends ArtPiece {}
+interface ArtFormProps {
+  onFormSubmit: (data: ArtFromValues) => void
+}
+
+const ArtForm: React.FC<ArtFormProps> = ({ onFormSubmit }) => {
+  const form = useForm<ArtFromValues>({
+    defaultValues: {
+      title: "",
+      artist: "",
+      year: undefined,
+      medium: "",
+      genre: "",
+      description: "",
+      image: "",
+    },
+  })
+
+  const { register, handleSubmit, formState, reset } = form
+  const { errors } = formState
+
+  const onSubmit = (data: ArtFromValues) => {
+    onFormSubmit(data)
+    reset()
+  }
+
+  // const onError = (errors: FieldErrors<ArtFromValues>) => {
+  //   console.log("Form errors", errors)
+  // }
+
   return (
-    <form onSubmit={onFormSubmit}>
-      <input
-        type="text"
-        name="title"
-        placeholder="Title"
-        value={formData.title}
-        onChange={onFormInput}
-        required
-      />
-      <input
-        type="text"
-        name="artist"
-        placeholder="Artist"
-        value={formData.artist}
-        onChange={onFormInput}
-        required
-      />
-      <input
-        type="number"
-        name="year"
-        placeholder="Year"
-        value={formData.year}
-        onChange={onFormInput}
-        required
-      />
-      <input
-        type="text"
-        name="medium"
-        placeholder="Medium"
-        value={formData.medium}
-        onChange={onFormInput}
-        required
-      />
-      <input
-        type="text"
-        name="genre"
-        placeholder="Genre"
-        value={formData.genre}
-        onChange={onFormInput}
-        required
-      />
-      <textarea
-        name="description"
-        placeholder="Description"
-        value={formData.description}
-        onChange={onFormInput}
-        required
-      />
-      <input
-        type="url"
-        name="image"
-        placeholder="Image URL"
-        value={formData.image}
-        onChange={onFormInput}
-        required
-      />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="form-control">
+        <input
+          type="text"
+          id="title"
+          placeholder="Title"
+          {...register("title", { required: "Title is required" })}
+        />
+        <p>{errors.title && <span>{errors.title.message}</span>}</p>
+      </div>
+
+      <div className="form-control">
+        <input
+          type="text"
+          id="artist"
+          placeholder="Artist"
+          {...register("artist", { required: "Artist is required" })}
+        />
+        <p>{errors.artist && <span>{errors.artist.message}</span>}</p>
+      </div>
+
+      <div className="form-control">
+        <input
+          type="number"
+          id="year"
+          placeholder="Year"
+          {...register("year", {
+            valueAsNumber: true,
+            required: {
+              value: true,
+              message: "Enter a valid year",
+            },
+          })}
+        />
+        <p>{errors.year && <span>{errors.year.message}</span>}</p>
+      </div>
+
+      <div className="form-control">
+        <input
+          type="text"
+          id="medium"
+          placeholder="Medium"
+          {...register("medium", { required: "Medium is required" })}
+        />
+        <p>{errors.medium && <span>{errors.medium.message}</span>}</p>
+      </div>
+
+      <div className="form-control">
+        <input
+          type="text"
+          id="genre"
+          placeholder="Genre"
+          {...register("genre", { required: "Genre is required" })}
+        />
+        <p>{errors.genre && <span>{errors.genre.message}</span>}</p>
+      </div>
+
+      <div className="form-control">
+        <textarea
+          id="description"
+          placeholder="Description"
+          {...register("description", { required: "Description is required" })}
+        />
+        <p>{errors.description && <span>{errors.description.message}</span>}</p>
+      </div>
+
+      <div className="form-control">
+        <input
+          type="url"
+          id="image"
+          placeholder="Image URL"
+          {...register("image", {
+            required: "Image URL is required",
+            pattern: {
+              value: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+              message: "Enter a valid URL",
+            },
+          })}
+        />
+        <p>{errors.image && <span>{errors.image.message}</span>}</p>
+      </div>
+
       <button type="submit">Add Art Piece</button>
     </form>
   )
