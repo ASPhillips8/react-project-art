@@ -11,19 +11,13 @@ import {
   updateGenreWithArtwork,
 } from "../services/genreService"
 import { createArtwork } from "../services/artworkService"
+import { ArtPiece } from "../types"
 
-const initialFormData = {
-  title: "",
-  artist: "",
-  year: "",
-  medium: "",
-  genre: "",
-  description: "",
-  image: "",
+interface NewArtWorkProps {
+  onAddNewArt: (artwork: ArtPiece) => void
 }
 
-function NewArtWork({ onAddNewArt }) {
-  const [formData, setFormData] = useState(initialFormData)
+const NewArtWork: React.FC<NewArtWorkProps> = ({ onAddNewArt }) => {
   const [artists, setArtists] = useState([])
   const [genres, setGenres] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -32,25 +26,18 @@ function NewArtWork({ onAddNewArt }) {
     setIsModalOpen(false)
   }
 
-  const handleFormInput = (event) => {
-    const { name, value } = event.target
-    setFormData({ ...formData, [name]: value })
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-
-    const artistEntry = await getOrCreateArtist(formData.artist, artists)
-    const genreEntry = await getOrCreateGenre(formData.genre, genres)
+  const handleSubmit = async (data: ArtPiece) => {
+    const artistEntry = await getOrCreateArtist(data.artist, artists)
+    const genreEntry = await getOrCreateGenre(data.genre, genres)
 
     const newArt = {
-      title: formData.title,
-      artist: formData.artist,
-      year: parseInt(formData.year),
-      medium: formData.medium,
-      genre: formData.genre,
-      description: formData.description,
-      image: formData.image,
+      title: data.title,
+      artist: data.artist,
+      year: parseInt(data.year.toString()),
+      medium: data.medium,
+      genre: data.genre,
+      description: data.description,
+      image: data.image,
       artistId: artistEntry.id,
     }
 
@@ -60,7 +47,6 @@ function NewArtWork({ onAddNewArt }) {
     await updateGenreWithArtwork(genreEntry, createdArtData.id)
 
     onAddNewArt(createdArtData)
-    setFormData(initialFormData)
     closeModal()
   }
 
@@ -83,11 +69,7 @@ function NewArtWork({ onAddNewArt }) {
               &times;
             </span>
             <h2>Add New Art Piece</h2>
-            <ArtForm
-              formData={formData}
-              onFormInput={handleFormInput}
-              onFormSubmit={handleSubmit}
-            />
+            <ArtForm onFormSubmit={handleSubmit} />
           </div>
         </div>
       )}

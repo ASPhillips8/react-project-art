@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react"
 import NavBar from "../components/NavBar"
 import Search from "../components/Search"
 import { fetchArtists } from "../services/fetcher"
+import { Artist } from "../types"
 
-interface ArtistProps {
-  id: number
-  name: string
-  artworks: string[]
-}
+interface ArtistProps extends Artist {}
 
 const Artists: React.FC = () => {
   const [artists, setArtists] = useState<ArtistProps[]>([])

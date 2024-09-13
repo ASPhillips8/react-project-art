@@ -1,8 +1,10 @@
+import { ArtPiece, Artist, Genre } from "../types"
+
 const artWorkUrl = "http://localhost:3001/artworks/"
 const artistUrl = "http://localhost:3001/artists/"
 const genreUrl = "http://localhost:3001/genres/"
 
-function getData(url) {
+function getData(url: string) {
   return fetch(url).then((response) => response.json())
 }
 
@@ -18,11 +20,11 @@ function fetchGenres() {
   return getData(genreUrl)
 }
 
-function fetchArtwork(id) {
+function fetchArtwork(id: string) {
   return getData(artWorkUrl + id)
 }
 
-function createArtist(artist) {
+function createArtist(artist: Artist) {
   return fetch(artistUrl, {
     method: "POST",
     headers: {
@@ -32,7 +34,7 @@ function createArtist(artist) {
   }).then((response) => response.json())
 }
 
-function createGenre(genre) {
+function createGenre(genre: Genre) {
   return fetch(genreUrl, {
     method: "POST",
     headers: {
@@ -42,7 +44,7 @@ function createGenre(genre) {
   }).then((response) => response.json())
 }
 
-function addNewArtwork(newArtWork) {
+function addNewArtwork(newArtWork: ArtPiece) {
   return fetch(artWorkUrl, {
     method: "POST",
     headers: {
@@ -52,7 +54,7 @@ function addNewArtwork(newArtWork) {
   }).then((response) => response.json())
 }
 
-function updateArtists(id, artists) {
+function updateArtists(id: string, artists: { artworks: string[] }) {
   return fetch(artistUrl + id, {
     method: "PATCH",
     headers: {
@@ -62,7 +64,7 @@ function updateArtists(id, artists) {
   }).then((response) => response.json())
 }
 
-function updateGenre(id, genre) {
+function updateGenre(id: string, genre: Genre) {
   if (genre.id) {
     return fetch(genreUrl + id, {
       method: "PATCH",

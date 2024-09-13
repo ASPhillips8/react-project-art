@@ -1,5 +1,5 @@
 export interface ArtPiece {
-  id: string
+  id?: string
   title: string
   description: string
   genre: string
@@ -7,4 +7,16 @@ export interface ArtPiece {
   image: string
   medium: string
   artist: string
+}
+
+export interface Artist {
+  id: string
+  name: string
+  artworks: string[]
+}
+
+export interface Genre {
+  id: string
+  name: string
+  artworks: string[]
 }

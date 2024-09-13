@@ -6,13 +6,15 @@ import { ArtPiece } from "../types"
 
 const Artwork: React.FC = () => {
   const [artwork, setArtwork] = useState<ArtPiece | null>(null)
-  const params = useParams()
+  const params = useParams<{ id: string }>()
   const artworkId = params.id
 
   useEffect(() => {
-    fetchArtwork(artworkId)
-      .then((artData) => setArtwork(artData))
-      .catch((error) => console.error(error))
+    if (artworkId) {
+      fetchArtwork(artworkId)
+        .then((artData) => setArtwork(artData))
+        .catch((error) => console.error(error))
+    }
   }, [artworkId])
 
   if (!artwork) {
